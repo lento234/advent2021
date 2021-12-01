@@ -100,6 +100,8 @@ Consider sums of a three-measurement sliding window. **How many sums are larger 
 >> [Test] Problem 1: answer = 7 [PASS]
 >> [Test] Problem 2: answer = 5 [PASS]
 
->> Problem 1: answer = 1393 [255 μs]
->> Problem 2: answer = 1359 [211 μs]
+>> Problem 1: answer = 1393
+>> Problem 2: answer = 1359
+
+>> [Summary] Total elapsed = 263 μs
 ```
