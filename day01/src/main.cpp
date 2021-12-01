@@ -18,18 +18,18 @@ static uint32_t problem1(std::string filename)
         throw std::runtime_error("Failed to open!");
 
     // Number of valid depths
-    uint32_t n = 0;
+    uint32_t answer = 0;
 
     // Check number of increasing depths
     uint32_t old_depth = -1, new_depth;
     while (file >> new_depth)
     {
         if (new_depth > old_depth)
-            n++;
+            answer++;
         old_depth = new_depth;
     }
     
-    return n;
+    return answer;
 }
 
 static uint32_t problem2(std::string filename)
