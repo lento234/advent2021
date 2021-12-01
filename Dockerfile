@@ -23,4 +23,4 @@ COPY . .
 RUN make build
 
 # Entrypoint
-ENTRYPOINT [ "make", "run"]
+CMD [ "make", "run"]
