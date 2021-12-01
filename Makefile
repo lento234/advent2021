@@ -1,3 +1,4 @@
+.PHONY: clean build help interact compile run
 .DEFAULT_GOAL := help
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -12,17 +13,27 @@ export PRINT_HELP_PYSCRIPT
 
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
 
-help:
+help: ## Print help
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-build: ## Build a docker image
+clean: ## Clean up
+	@rm -rvf build
+	@rm -rvf day*/build
+	
+docker: ## Build a docker image
 	DOCKER_BUILDKIT=1 docker build --progress=auto -t mrlento234/advent2021:latest . 
 
 interact: ## Run a docker image interactively
 	DOCKER_BUILDKIT=1 docker run -it --rm mrlento234/advent2021:latest bash
 
-compile: ## Compile all days
+build: ## Compile all days
 	cmake -H. -B build && make -C build
 
-run:
-	./build/day$(DAY)/day$(DAY)
+run: ## Run all days
+	@cd build;\
+	for day in `ls -dtr day*`; do \
+		cd $$day && ./$$day && cd ..; \
+	done
+
+run-docker: ## Run all days inside docker
+	docker run --rm mrlento234/advent2021:latest	

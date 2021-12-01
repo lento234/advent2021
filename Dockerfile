@@ -20,4 +20,7 @@ WORKDIR /advent2021/
 COPY . . 
 
 # Compile all
-RUN make compile
+RUN make build
+
+# Entrypoint
+ENTRYPOINT [ "make", "run"]
