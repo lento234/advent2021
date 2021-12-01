@@ -6,42 +6,46 @@
 #include <string>
 #include <fmt/ranges.h>
 
-inline std::string passed_or_failed(uint32_t answer, uint32_t truth)
-{
-    return answer == truth ? "\x1B[1m\x1B[32mPASS\033[0m" : "\x1B[1m\x1B[31mFAIL\033[0m (=" + std::to_string(truth) + ")";
-}
+#include <util.h>
 
 static uint32_t problem1(std::string filename)
 {
     // Read file
-    std::ifstream file(filename);
-    if (!file.good())
-        throw std::runtime_error("Failed to open!");
+    auto text = Message<uint32_t>(filename);
 
     // Number of valid depths
     uint32_t answer = 0;
 
     // Check number of increasing depths
-    uint32_t old_depth = -1, new_depth;
-    while (file >> new_depth)
+    uint32_t prev_depth = -1;
+    for (auto depth : text.content)
     {
-        if (new_depth > old_depth)
+        // Check if new depth is higher, then is valid
+        if (depth > prev_depth)
             answer++;
-        old_depth = new_depth;
+        prev_depth = depth;
     }
-    
+
     return answer;
 }
 
 static uint32_t problem2(std::string filename)
 {
     // Read file
-    std::ifstream file(filename);
-    if (!file.good())
-        throw std::runtime_error("Failed to open!");
+    auto text = Message<uint32_t>(filename);
     
     // Answer
     uint32_t answer = 0;
+
+    // Check sum
+    uint32_t prev_sum = -1, new_sum;
+    for (size_t i=1; i<text.size()-1; ++i)
+    {
+        new_sum = text.content[i-1] + text.content[i] + text.content[i+1];
+        if (new_sum > prev_sum)
+            answer++;
+        prev_sum = new_sum;
+    }
 
     return answer;
 }
@@ -59,7 +63,7 @@ int main()
                 passed_or_failed(test_answer1, 7));
     uint32_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n", test_answer2, 
-                passed_or_failed(test_answer1, 5));
+                passed_or_failed(test_answer2, 5));
     
     // Problem 1
     auto start = std::chrono::high_resolution_clock::now();
@@ -69,4 +73,11 @@ int main()
                 std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
     
 
+    // Problem 2
+    start = std::chrono::high_resolution_clock::now();
+    uint32_t answer2 = problem2("input.txt");
+    end = std::chrono::high_resolution_clock::now();
+    fmt::print(">> Problem 2: answer = {} [{} μs]\n", answer2, 
+                std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+    
 }

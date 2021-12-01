@@ -18,6 +18,9 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 # External libraries
 find_package(fmt)
 
+# Include headers
+include_directories("../lib")
+
 # Glob files
 file(GLOB SOURCES "src/*.cpp")
 

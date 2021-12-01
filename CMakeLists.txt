@@ -6,6 +6,9 @@ project(advent2021)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Include library
+include_directories("lib")
+
 # add all days
 file(GLOB SOURCES "day*")
 foreach(DIR ${SOURCES})
