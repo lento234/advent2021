@@ -89,3 +89,16 @@ H: 792 (increased)
 In this example, there are `5` sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. **How many sums are larger than the previous sum?**
+
+## Answer
+
+
+```
+🎄 Advent of Code: Day 1 🎄
+---------------------------
+
+>> [Test] Problem 1: answer = 7 [PASS]
+>> [Test] Problem 2: answer = 0 [FAIL (=5)]
+
+>> Problem 1: answer = 1393 [246 μs]
+```

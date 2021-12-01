@@ -1,5 +1,6 @@
 // Advent of Code: Day 1
 // Lento Manickathan
+#include <chrono>
 #include <fstream>
 #include <vector>
 #include <string>
@@ -61,7 +62,11 @@ int main()
                 passed_or_failed(test_answer1, 5));
     
     // Problem 1
+    auto start = std::chrono::high_resolution_clock::now();
     uint32_t answer1 = problem1("input.txt");
-    fmt::print(">> Problem 1: answer = {}\n", answer1);
+    auto end = std::chrono::high_resolution_clock::now();
+    fmt::print(">> Problem 1: answer = {} [{} μs]\n", answer1, 
+                std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+    
 
 }
