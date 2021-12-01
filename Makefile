@@ -35,5 +35,5 @@ run: ## Run all days
 		cd $$day && ./$$day && cd ..; \
 	done
 
-run-docker: ## Run all days inside docker
+docker-run: ## Run all days inside docker
 	docker run --rm mrlento234/advent2021:latest	
