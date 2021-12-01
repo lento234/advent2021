@@ -29,5 +29,5 @@ target_link_libraries(day01 fmt::fmt)
 
 # add input files
 configure_file(test_input.txt test_input.txt)
-#configure_file(input.txt input.txt)
+configure_file(input.txt input.txt)
 

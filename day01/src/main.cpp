@@ -7,7 +7,7 @@
 
 inline std::string passed_or_failed(uint32_t answer, uint32_t truth)
 {
-    return answer == truth ? "\x1B[1m\x1B[32mPASSED\033[0m" : "\x1B[1m\x1B[31mFAILED\033[0m";
+    return answer == truth ? "\x1B[1m\x1B[32mPASS\033[0m" : "\x1B[1m\x1B[31mFAIL\033[0m (=" + std::to_string(truth) + ")";
 }
 
 static uint32_t problem1(std::string filename)
@@ -32,6 +32,19 @@ static uint32_t problem1(std::string filename)
     return n;
 }
 
+static uint32_t problem2(std::string filename)
+{
+    // Read file
+    std::ifstream file(filename);
+    if (!file.good())
+        throw std::runtime_error("Failed to open!");
+    
+    // Answer
+    uint32_t answer = 0;
+
+    return answer;
+}
+
 int main()
 {
     // Header info
@@ -43,5 +56,12 @@ int main()
     uint32_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n", test_answer1, 
                 passed_or_failed(test_answer1, 7));
+    uint32_t test_answer2 = problem2("test_input.txt");
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n", test_answer2, 
+                passed_or_failed(test_answer1, 5));
     
+    // Problem 1
+    uint32_t answer1 = problem1("input.txt");
+    fmt::print(">> Problem 1: answer = {}\n", answer1);
+
 }
