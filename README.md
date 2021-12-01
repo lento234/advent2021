@@ -1,4 +1,4 @@
-<div align="center">    
+<div align="center">
 
 # Advent of Code 2021
 
@@ -6,6 +6,7 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 [![GitHub license](https://img.shields.io/github/license/lento234/advent2021?color=blue)](https://github.com/lento234/advent2021/blob/main/LICENSE)
+![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
 
 ## Description
 
