@@ -20,12 +20,6 @@ clean: ## Clean up
 	@rm -rvf build
 	@rm -rvf day*/build
 	
-docker: ## Build a docker image
-	DOCKER_BUILDKIT=1 docker build --progress=auto -t mrlento234/advent2021:latest . 
-
-interact: ## Run a docker image interactively
-	DOCKER_BUILDKIT=1 docker run -it --rm mrlento234/advent2021:latest bash
-
 build: ## Compile all days
 	cmake -H. -B build && make -C build
 
@@ -34,6 +28,15 @@ run: ## Run all days
 	for day in `ls -dtr day*`; do \
 		cd $$day && ./$$day && cd ..; \
 	done
+
+docker: ## Build a docker image
+	DOCKER_BUILDKIT=1 docker build --progress=auto -t mrlento234/advent2021:latest . 
+
+docker-interact: ## Run a docker image interactively
+	DOCKER_BUILDKIT=1 docker run -it --rm mrlento234/advent2021:latest bash
+
+docker-push:
+	docker push mrlento234/advent2021:latest
 
 docker-run: ## Run all days inside docker
 	docker run --rm mrlento234/advent2021:latest	

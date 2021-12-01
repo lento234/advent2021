@@ -19,7 +19,7 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 find_package(fmt)
 
 # Include headers
-include_directories("../lib")
+include_directories("include")
 
 # Glob files
 file(GLOB SOURCES "src/*.cpp")
