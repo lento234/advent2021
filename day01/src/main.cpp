@@ -5,6 +5,11 @@
 #include <string>
 #include <fmt/ranges.h>
 
+inline std::string passed_or_failed(uint32_t answer, uint32_t truth)
+{
+    return answer == truth ? "\x1B[1m\x1B[32mPASSED\033[0m" : "\x1B[1m\x1B[31mFAILED\033[0m";
+}
+
 static uint32_t problem1(std::string filename)
 {
     // Read file
@@ -31,13 +36,12 @@ int main()
 {
     // Header info
     constexpr int day = 1;
-    fmt::print("//////////////////////////////\n");
-    fmt::print("    Advent of Code : Day {}   \n", day);
-    fmt::print("//////////////////////////////\n\n");
-
+    fmt::print("\n🎄 Advent of Code: Day {} 🎄\n", day);
+    fmt::print("---------------------------\n\n");
+    
     // Test input
     uint32_t test_answer1 = problem1("test_input.txt");
-    fmt::print(">> Test answer 1: {}\n", test_answer1);
-    fmt::print(">> Test 1: {}\n", (test_answer1 == 7) ? "PASSED" : "FAILED");
-
+    fmt::print(">> [Test] Problem 1: answer = {} [{}]\n", test_answer1, 
+                passed_or_failed(test_answer1, 7));
+    
 }
