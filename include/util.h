@@ -5,7 +5,7 @@
 #include <fstream>
 #include <fmt/ranges.h>
 
-inline std::string passed_or_failed(uint32_t answer, uint32_t truth)
+inline std::string pass_or_fail(uint32_t answer, uint32_t truth)
 {
     return answer == truth ? "\x1B[1m\x1B[32mPASS\033[0m" : "\x1B[1m\x1B[31mFAIL\033[0m (=" + std::to_string(truth) + ")";
 }
