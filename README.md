@@ -22,11 +22,19 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 | 13 | 14 | 15 | 16 | 17 | 18 | 19 |
 | 20 | 21 | 22 | 23 | 24 | 🎁 |    |
 
-## Build
+## Build 
 
-Build using the cmake workflow:
+### Run directly from docker
 
 ```bash
-cmake -B build
-make -j -C build
+docker run --rm mrlento234/advent2021:latest
 ```
+
+### Locally
+
+Build using the make & cmake workflow:
+
+```bash
+make -j4 build
+```
+
