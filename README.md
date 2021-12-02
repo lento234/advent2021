@@ -7,6 +7,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 [![GitHub license](https://img.shields.io/github/license/lento234/advent2021?color=blue)](https://github.com/lento234/advent2021/blob/main/LICENSE)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
+![](https://img.shields.io/badge/stars%20⭐-4-gold.svg)
 
 ## Description
 
