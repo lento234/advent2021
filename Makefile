@@ -21,7 +21,7 @@ clean: ## Clean up
 	@rm -rvf day*/build
 	
 build: ## Compile all days
-	cmake -H. -B build && make -C build
+	cmake -H. -B build && make -j -C build
 
 run: ## Run all days
 	@cd build;\

@@ -36,6 +36,10 @@ docker run --rm mrlento234/advent2021:latest
 Build using the make & cmake workflow:
 
 ```bash
-make -j4 build
+make build
 ```
 
+Run all days
+```
+make run
+```
