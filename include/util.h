@@ -1,9 +1,9 @@
 #pragma once
 
+#include <fmt/ranges.h>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <fmt/ranges.h>
 
 inline std::string pass_or_fail(uint32_t answer, uint32_t truth)
 {
@@ -14,7 +14,7 @@ template <typename T>
 struct Text
 {
     std::vector<T> raw;
-    
+
     //inline std::vector<std::string> read_file(const std::string& filename)
     Text(const std::string& filename)
     {
@@ -27,7 +27,7 @@ struct Text
         T buffer;
         while (file >> buffer)
             raw.push_back(buffer);
-        file.close();       
+        file.close();
     }
 
     inline size_t size() { return raw.size(); }
@@ -41,5 +41,4 @@ struct Text
 
     auto begin() { return raw.begin(); }
     auto end() { return raw.end(); }
-
 };
