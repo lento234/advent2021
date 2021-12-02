@@ -33,9 +33,41 @@ static int64_t problem1(std::string filename)
     }
     
     // Answer
-    int64_t answer = horz * vert;
-    
-    return answer;
+    return horz * vert;
+}
+
+static int64_t problem2(std::string filename)
+{
+    // Read file
+    auto text = Text<std::string>(filename);
+
+    uint8_t cmd;
+    int64_t unit, horz=0, vert=0, aim=0;
+
+    for (size_t i=0; i<text.size()-1; i=i+2)
+    {
+        cmd = text[i][0];
+        unit = std::stoi(text[i+1]);
+
+        // Accumulate
+        if (cmd == 'f')
+        {
+            horz += unit;
+            vert += unit*aim;
+        }
+        else if (cmd == 'b')
+        {
+            horz -= unit;
+            vert -= unit*aim;
+        }
+        else if (cmd == 'd')
+            aim += unit;
+        else
+            aim -= unit;
+    }
+
+    // Answer
+    return horz * vert;
 }
 
 
@@ -54,17 +86,15 @@ int main()
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n", 
         test_answer1, pass_or_fail(test_answer1, 150));
     
-    // uint32_t test_answer2 = problem2("test_input.txt");
-    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n", 
-    //     test_answer2, pass_or_fail(test_answer2, 5));
+    int32_t test_answer2 = problem2("test_input.txt");
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n", 
+        test_answer2, pass_or_fail(test_answer2, 900));
     
-    // // Problem 1
-    int64_t answer1 = problem1("input.txt");
-    fmt::print(">> Problem 1: answer = {}\n", answer1);
+    // Problem 1
+    fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
 
-    // // Problem 2
-    // uint32_t answer2 = problem2("input.txt");
-    // fmt::print(">> Problem 2: answer = {}\n", answer2);
+    // Problem 2
+    fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
     
     // Summary
     auto end = std::chrono::high_resolution_clock::now();

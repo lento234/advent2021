@@ -25,7 +25,7 @@ build: ## Compile all days
 
 run: ## Run all days
 	@cd build;\
-	for day in `ls -dtr day*`; do \
+	for day in `ls -d day*`; do \
 		cd $$day && ./$$day && cd ..; \
 	done
 
