@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(day01)
+project(day02)
 
 # C++17 standard
 set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -25,12 +25,12 @@ include_directories("../include")
 file(GLOB SOURCES "src/*.cpp")
 
 # Compile binary
-add_executable(day01 ${SOURCES})
+add_executable(day02 ${SOURCES})
 
 # Link libraries
-target_link_libraries(day01 fmt::fmt)
+target_link_libraries(day02 fmt::fmt)
 
 # add input files
 configure_file(test_input.txt test_input.txt)
-configure_file(input.txt input.txt)
+# configure_file(input.txt input.txt)
 
