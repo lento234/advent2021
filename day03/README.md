@@ -1,5 +1,18 @@
 # Day 03
 
+## Answer
+
+    🎄 Advent of Code: Day 3 🎄
+    ---------------------------
+
+    >> [Test] Problem 1: answer = 198 [PASS]
+    >> [Test] Problem 2: answer = 230 [PASS]
+
+    >> Problem 1: answer = 2967914
+    >> Problem 2: answer = 7041258
+
+    >> [Summary] Total elapsed = 1851 μs
+
 \-\-- Day 3: Binary Diagnostic \-\--
 ------------------------------------
 
@@ -59,8 +72,6 @@ consumption of the submarine?* (Be sure to represent your answer in
 decimal, not binary.)
 
 Your puzzle answer was `2967914`.
-
-The first half of this puzzle is complete! It provides one gold star: \*
 
 \-\-- Part Two \-\-- {#part2}
 --------------------
@@ -141,3 +152,8 @@ Use the binary numbers in your diagnostic report to calculate the oxygen
 generator rating and CO2 scrubber rating, then multiply them together.
 *What is the life support rating of the submarine?* (Be sure to
 represent your answer in decimal, not binary.)
+
+Your puzzle answer was `7041258`.
+
+Both parts of this puzzle are complete! They provide two gold stars:
+\*\*
