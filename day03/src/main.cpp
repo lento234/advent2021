@@ -1,11 +1,8 @@
 // Advent of Code: Day 03
 // Lento Manickathan
-#include <array>
 #include <bitset>
 #include <chrono>
 #include <fmt/ranges.h>
-#include <fstream>
-#include <iostream>
 #include <string>
 #include <vector>
 
@@ -14,7 +11,7 @@
 template <size_t N>
 static std::string decode_text(Text<std::string>& text)
 {
-    size_t counts[N] = {0, 0, 0, 0, 0};
+    std::vector<size_t> counts(N, 0);
 
     for (auto line : text)
         for (size_t i = 0; i < N; ++i)
@@ -75,7 +72,7 @@ int main()
     int64_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail(test_answer2, 0));
+               pass_or_fail(test_answer2, 230));
 
     // Problem 1
     int64_t answer1 = problem1<12>("input.txt");
