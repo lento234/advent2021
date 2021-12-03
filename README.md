@@ -44,7 +44,7 @@ Run directly from the docker image
 
         make run
 
-3. *Optional*: make and run a specific day `dayxx`:
+3. *Optional*: make and run a specific day `xx`:
 
         cd dayxx
         make build
@@ -52,4 +52,4 @@ Run directly from the docker image
 
 #### Install dependencies
 
-    apt install build-essentials cmake libfmt-dev
+    apt install build-essential cmake libfmt-dev
