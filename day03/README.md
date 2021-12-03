@@ -73,7 +73,7 @@ decimal, not binary.)
 
 Your puzzle answer was `2967914`.
 
-\-\-- Part Two \-\-- {#part2}
+\-\-- Part Two \-\--
 --------------------
 
 Next, you should verify the *life support rating*, which can be

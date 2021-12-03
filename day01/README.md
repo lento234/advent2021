@@ -84,7 +84,7 @@ previous measurement.
 
 Your puzzle answer was `1393`.
 
-\-\-- Part Two \-\-- {#part2}
+\-\-- Part Two \-\--
 --------------------
 
 Considering every single measurement isn\'t as useful as you expected:

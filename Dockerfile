@@ -8,16 +8,16 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Install necessary packages
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        build-essential \
-        cmake \
-        libfmt-dev \
+    build-essential \
+    cmake \
+    libfmt-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Change working directory
 WORKDIR /advent2021/
 
 # Copy all
-COPY . . 
+COPY . .
 
 # Compile all
 RUN make build
