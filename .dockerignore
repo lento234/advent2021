@@ -2,6 +2,6 @@
 .vscode/
 .github/
 .gitignore/
-
 build/
 day*/build/
+.cookie
