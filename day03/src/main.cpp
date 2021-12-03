@@ -24,7 +24,7 @@ static std::string decode_text(Text<std::string>& text)
     return bits;
 }
 
-std::vector<std::string> radix_filter(std::vector<std::string> text, size_t pos, bool maxel)
+std::vector<std::string> radix_filter(std::vector<std::string> text, size_t pos, bool bit)
 {
     std::vector<std::string> left, right;
 
@@ -35,19 +35,20 @@ std::vector<std::string> radix_filter(std::vector<std::string> text, size_t pos,
         else
             right.push_back(line);
     }
-    if (maxel)
+    if (bit)
         return left.size() > right.size() ? left : right;
     else
         return left.size() <= right.size() ? left : right;
 }
 
-std::string radix_decode_text(Text<std::string>& text, size_t size, bool maxel)
+template <size_t N>
+std::string radix_decode_text(Text<std::string>& text, bool bit)
 {
     std::vector<std::string> filtered_text = text.raw;
 
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < N; ++i)
     {
-        filtered_text = radix_filter(filtered_text, i, maxel);
+        filtered_text = radix_filter(filtered_text, i, bit);
 
         if (filtered_text.size() == 1)
             break;
@@ -80,8 +81,8 @@ static int64_t problem2(std::string filename)
     // Read file
     auto text = Text<std::string>(filename);
 
-    auto oxygen = std::bitset<N>(radix_decode_text(text, N, true)).to_ulong();
-    auto co2 = std::bitset<N>(radix_decode_text(text, N, false)).to_ulong();
+    auto oxygen = std::bitset<N>(radix_decode_text<N>(text, true)).to_ulong(); // sort by 1
+    auto co2 = std::bitset<N>(radix_decode_text<N>(text, false)).to_ulong();   // sort by 0
 
     // Answer
     int64_t answer = oxygen * co2;
@@ -111,12 +112,12 @@ int main()
                pass_or_fail(test_answer2, 230));
 
     // // Problem 1
-    // int64_t answer1 = problem1<12>("input.txt");
-    // fmt::print(">> Problem 1: answer = {}\n", answer1);
+    int64_t answer1 = problem1<12>("input.txt");
+    fmt::print(">> Problem 1: answer = {}\n", answer1);
 
-    // // // Problem 2
-    // int64_t answer2 = problem2("input.txt");
-    // fmt::print(">> Problem 2: answer = {}\n", answer2);
+    // // Problem 2
+    int64_t answer2 = problem2<12>("input.txt");
+    fmt::print(">> Problem 2: answer = {}\n", answer2);
 
     // Summary
     auto end = std::chrono::high_resolution_clock::now();
