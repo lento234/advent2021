@@ -28,21 +28,28 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 ## Build 
 
-### Run directly from docker
+### Docker
 
-```bash
-docker run --rm mrlento234/advent2021:latest
-```
+Run directly from the docker image
 
-### Locally
+    docker run --rm mrlento234/advent2021:latest
 
-Build using the make & cmake workflow:
+### From source
 
-```bash
-make build
-```
+1. Build using `cmake` in the `build` directory:
 
-Run all days
-```
-make run
-```
+        make build
+
+2. Run all the days:
+
+        make run
+
+3. *Optional*: make and run a specific day `dayxx`:
+
+        cd dayxx
+        make build
+        ./dayxx
+
+#### Install dependencies
+
+    apt install build-essentials cmake libfmt-dev
