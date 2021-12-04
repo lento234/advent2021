@@ -1,8 +1,8 @@
 // Advent of Code: Day 04
 // Lento Manickathan
+#include <algorithm>
 #include <chrono>
 #include <fmt/ranges.h>
-// #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
