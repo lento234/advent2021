@@ -3,7 +3,7 @@
 # 🎅🎄 Advent of Code 2021 ☃️❄️
  
 
-![](https://img.shields.io/badge/stars%20⭐-6-gold.svg)
+![](https://img.shields.io/badge/stars%20⭐-8-gold.svg)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
@@ -21,7 +21,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 |   M   |   T   |          W           |          T           |          F           |              S              |   S   |
 | :---: | :---: | :------------------: | :------------------: | :------------------: | :-------------------------: | :---: |
-|       |       | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md) |              4              |   5   |
+|       |       | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md) |    [4](day04/README.md)     |   5   |
 |   6   |   7   |          8           |          9           |          10          |             11              |  12   |
 |  13   |  14   |          15          |          16          |          17          |             18              |  19   |
 |  20   |  21   |          22          |          23          |          24          | [🎁](https://bit.ly/3pnrWiY) |       |
