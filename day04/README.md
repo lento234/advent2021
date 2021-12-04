@@ -1,5 +1,19 @@
 # Day 04
 
+## Answer
+
+    🎄 Advent of Code: Day 4 🎄
+    ---------------------------
+
+    >> [Test] Problem 1: answer = 4512 [PASS]
+    >> [Test] Problem 2: answer = 1924 [PASS]
+
+    >> Problem 1: answer = 8136
+    >> Problem 2: answer = 12738
+
+    >> [Summary] Total elapsed = 2722 μs
+
+
 \-\-- Day 4: Giant Squid \-\--
 ------------------------------
 
@@ -81,3 +95,31 @@ when the board won, `24`, to get the final score, `188 * 24 = 4512`.
 To guarantee victory against the giant squid, figure out which board
 will win first. *What will your final score be if you choose that
 board?*
+
+Your puzzle answer was `8136`.
+
+\-\-- Part Two \-\--
+--------------------
+
+On the other hand, it might be wise to try a different strategy: [let
+the giant squid
+win]{title="That's 'cuz a submarine don't pull things' antennas out of their sockets when they lose. Giant squid are known to do that."}.
+
+You aren\'t sure how many bingo boards a giant squid could play at once,
+so rather than waste time counting its arms, the safe thing to do is to
+*figure out which board will win last* and choose that one. That way, no
+matter which boards it picks, it will win for sure.
+
+In the above example, the second board is the last to win, which happens
+after `13` is eventually called and its middle column is completely
+marked. If you were to keep playing until this point, the second board
+would have a sum of unmarked numbers equal to `148` for a final score of
+`148 * 13 = 1924`.
+
+Figure out which board will win last. *Once it wins, what would its
+final score be?*
+
+Your puzzle answer was `12738`.
+
+Both parts of this puzzle are complete! They provide two gold stars:
+\*\*
