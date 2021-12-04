@@ -33,7 +33,7 @@ struct Board
 
     bool bingo()
     {
-        for (size_t i = 0; i < n_rows; ++i)
+        for (size_t i = 0; i < n_rows * n_cols; i += n_rows)
             if (marked[i] && marked[i + 1] && marked[i + 2] && marked[i + 3] && marked[i + 4])
                 return true;
         for (size_t i = 0; i < n_cols; ++i)
@@ -47,8 +47,10 @@ struct Board
     {
         int64_t sum = 0;
         for (size_t i = 0; i < n_rows * n_cols; ++i)
+        {
             if (!marked[i])
                 sum += pieces[i];
+        }
         return sum;
     }
 
@@ -69,7 +71,7 @@ struct Board
         uint8_t i = 0;
         for (const auto& m : marked)
         {
-            fmt::print("{} ", m ? 'o' : 'x');
+            fmt::print("{} ", m ? 'x' : '.');
             if (++i % n_cols == 0)
                 fmt::print("\n");
         }
@@ -89,7 +91,7 @@ static std::vector<uint8_t> parse_draws(std::string line)
 }
 
 // return the bingo number and winning board
-static std::pair<int32_t, Board> its_a_bingo(const std::vector<uint8_t>& draws, std::vector<Board>& boards)
+static std::pair<int64_t, Board> its_a_bingo(const std::vector<uint8_t>& draws, std::vector<Board>& boards)
 {
     for (const auto& draw : draws)
     {
@@ -101,6 +103,36 @@ static std::pair<int32_t, Board> its_a_bingo(const std::vector<uint8_t>& draws, 
         }
     }
     return {-1, boards[0]};
+}
+
+inline bool check_if_not_inside(std::vector<size_t>& indices, size_t i)
+{
+    return std::find(indices.begin(), indices.end(), i) == indices.end();
+}
+
+// return the bingo number and winning board
+static std::pair<int64_t, Board> its_a_final_bingo(const std::vector<uint8_t>& draws, std::vector<Board>& boards)
+{
+    std::vector<size_t> winner_boards_indices;
+    std::vector<size_t> winner_draws;
+
+    for (const auto& draw : draws)
+    {
+        for (size_t i = 0; i < boards.size(); ++i)
+        {
+            if (check_if_not_inside(winner_boards_indices, i))
+            {
+                boards[i].mark(draw);
+                if (boards[i].bingo())
+                {
+                    winner_boards_indices.push_back(i);
+                    winner_draws.push_back(draw);
+                }
+            }
+        }
+    }
+    // return last winner index
+    return {winner_draws.end()[-1], boards[winner_boards_indices.end()[-1]]};
 }
 
 static int64_t problem1(std::string filename)
@@ -128,16 +160,30 @@ static int64_t problem1(std::string filename)
     return answer;
 }
 
-// static int64_t problem2(std::string filename)
-// {
-//     // Read file
-//     auto text = Text<std::string>(filename);
+static int64_t problem2(std::string filename)
+{
+    // Read file
+    auto text = Text<std::string>(filename);
 
-//     // Answer
-//     int64_t answer = 0;
+    // Store all draw numbers
+    auto draws = parse_draws(text[0]);
 
-//     return answer;
-// }
+    // Make boards
+    std::vector<Board> boards;
+    for (auto it = text.begin() + 1; it != text.end(); it = it + 25)
+        boards.push_back(Board(it, it + 25));
+
+    // Find bingo number and winning board
+    auto [bingo, board] = its_a_final_bingo(draws, boards);
+
+    // Sum up all non-bingo numbers
+    int64_t sum_non_bingo = board.sum_non_bingo();
+
+    // Answer
+    int64_t answer = bingo * sum_non_bingo;
+
+    return answer;
+}
 
 int main()
 {
@@ -155,17 +201,18 @@ int main()
                test_answer1,
                pass_or_fail(test_answer1, 4512));
 
-    // int64_t test_answer2 = problem2("test_input.txt");
-    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-    //     test_answer2, pass_or_fail(test_answer2, 0));
+    int64_t test_answer2 = problem2("test_input.txt");
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+               test_answer2,
+               pass_or_fail(test_answer2, 1924));
 
     // Problem 1
     int64_t answer1 = problem1("input.txt");
     fmt::print(">> Problem 1: answer = {}\n", answer1);
 
-    // // // Problem 2
-    // int64_t answer2 = problem2("input.txt");
-    // fmt::print(">> Problem 2: answer = {}\n", answer2);
+    // Problem 2
+    int64_t answer2 = problem2("input.txt");
+    fmt::print(">> Problem 2: answer = {}\n", answer2);
 
     // Summary
     auto end = std::chrono::high_resolution_clock::now();
