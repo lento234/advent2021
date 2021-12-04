@@ -11,7 +11,7 @@ inline std::string pass_or_fail(uint32_t answer, uint32_t truth)
 }
 
 template <typename T>
-struct Text
+struct Text 
 {
     std::vector<T> raw;
 
