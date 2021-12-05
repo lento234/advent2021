@@ -18,7 +18,6 @@ static int64_t problem1(std::string filename)
     return answer;
 }
 
-/*
 static int64_t problem2(std::string filename)
 {
     // Read file
@@ -29,7 +28,6 @@ static int64_t problem2(std::string filename)
 
     return answer;
 }
-*/
 
 int main()
 {
@@ -47,18 +45,14 @@ int main()
                test_answer1,
                pass_or_fail(test_answer1, 0));
 
-    /*
     int64_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
                pass_or_fail(test_answer2, 0));
 
-    // // Problem 1
-    int64_t answer1 = problem1("input.txt");
-    fmt::print(">> Problem 1: answer = {}\n", answer1);
+    // Problem 1
+    fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
 
-    // // Problem 2
-    int64_t answer2 = problem2("input.txt");
-    fmt::print(">> Problem 2: answer = {}\n", answer2);
-    */  
+    // Problem 2
+    fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
 }
