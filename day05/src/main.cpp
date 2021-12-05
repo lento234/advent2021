@@ -17,6 +17,7 @@ static uint32_t problem1(std::string filename)
 
     // Generate map and get points
     auto map = Map(text);
+
     auto points = map.points; // Get map points
     
     // Find number of points larger than 2
@@ -62,11 +63,12 @@ int main()
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
                pass_or_fail(test_answer2, 0));
+    */
 
-    // // Problem 1
-    int64_t answer1 = problem1("input.txt");
-    fmt::print(">> Problem 1: answer = {}\n", answer1);
+    // Problem 1
+    // fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
 
+    /*
     // // Problem 2
     int64_t answer2 = problem2("input.txt");
     fmt::print(">> Problem 2: answer = {}\n", answer2);

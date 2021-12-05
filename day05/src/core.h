@@ -13,7 +13,7 @@ struct Point
     Point() = default;
 
     Point(std::string& line)
-      : x(std::stoi(line.substr(0, 1))), y(std::stoi(line.substr(2)))
+      : x(std::stoi(line.substr(0, line.find(",")))), y(std::stoi(line.substr(line.find(",")+1)))
     {
     }
 
