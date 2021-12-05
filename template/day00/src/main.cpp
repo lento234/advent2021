@@ -33,7 +33,7 @@ static int64_t problem2(std::string filename)
 
 int main()
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    auto timeit = Timer();
 
     constexpr uint8_t day = 00;
 
@@ -60,10 +60,5 @@ int main()
     // // Problem 2
     int64_t answer2 = problem2("input.txt");
     fmt::print(">> Problem 2: answer = {}\n", answer2);
-    */
-   
-    // Summary
-    auto end = std::chrono::high_resolution_clock::now();
-    fmt::print("\n>> [Summary] Total elapsed = {} μs\n\n",
-               std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+    */  
 }

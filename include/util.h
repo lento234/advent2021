@@ -1,5 +1,6 @@
 #pragma once
 
+#include <chrono>
 #include <fmt/ranges.h>
 #include <fstream>
 #include <string>
@@ -10,8 +11,26 @@ inline std::string pass_or_fail(uint32_t answer, uint32_t truth)
     return answer == truth ? "\x1B[1m\x1B[32mPASS\033[0m" : "\x1B[1m\x1B[31mFAIL\033[0m (=" + std::to_string(truth) + ")";
 }
 
+class Timer
+{
+public:
+    std::chrono::time_point<std::chrono::system_clock> start;
+
+    Timer()
+    {
+        start = std::chrono::high_resolution_clock::now();
+    }
+
+    ~Timer()
+    {
+        auto end = std::chrono::high_resolution_clock::now();
+        fmt::print("\n>> [Summary] Total elapsed = {} μs\n\n",
+                   std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+    }
+};
+
 template <typename T>
-struct Text 
+struct Text
 {
     std::vector<T> raw;
 

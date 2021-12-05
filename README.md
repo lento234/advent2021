@@ -52,4 +52,14 @@ Run directly from the docker image
 
 #### Install dependencies
 
-    apt install build-essential cmake libfmt-dev
+**Ubuntu**:
+    
+    apt install build-essential cmake libfmt-dev curl pandoc
+
+**Arch**:
+
+    pacman -S base-devel cmake curl pandoc fmt
+
+**MacOS**: 
+
+    brew install cmake curl pandoc fmt
