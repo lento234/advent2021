@@ -2,21 +2,29 @@
 // Lento Manickathan
 #include <chrono>
 #include <fmt/ranges.h>
+#include <sstream>
 #include <string>
 #include <vector>
 
 #include <util.h>
 
-static int64_t problem1(std::string filename)
+#include "core.h"
+
+static uint32_t problem1(std::string filename)
 {
     // Read file
     auto text = Text<std::string>(filename);
 
-    text.print();
-
-    // Answer
-    int64_t answer = 0;
-
+    // Generate map and get points
+    auto map = Map(text);
+    auto points = map.points; // Get map points
+    
+    // Find number of points larger than 2
+    uint32_t answer = 0;
+    for (auto& point : points)
+        if (point >= 2)
+            answer++;
+    
     return answer;
 }
 
@@ -44,10 +52,10 @@ int main()
     fmt::print("---------------------------\n\n");
 
     // Test input
-    int64_t test_answer1 = problem1("test_input.txt");
+    uint32_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail(test_answer1, 0));
+               pass_or_fail(test_answer1, 5));
 
     /*
     int64_t test_answer2 = problem2("test_input.txt");
@@ -62,5 +70,5 @@ int main()
     // // Problem 2
     int64_t answer2 = problem2("input.txt");
     fmt::print(">> Problem 2: answer = {}\n", answer2);
-    */  
+    */
 }
