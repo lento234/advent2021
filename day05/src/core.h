@@ -8,16 +8,18 @@
 
 struct Point
 {
-    uint32_t x = 0, y = 0;
+    using coor_t = uint16_t;
+
+    coor_t x = 0, y = 0;
 
     Point() = default;
 
-    Point(std::string& line)
+    Point(const std::string& line)
       : x(std::stoi(line.substr(0, line.find(",")))), y(std::stoi(line.substr(line.find(",") + 1)))
     {
     }
 
-    Point(uint32_t x, uint32_t y)
+    Point(const coor_t& x, const coor_t& y)
       : x(x), y(y)
     {
     }
@@ -70,15 +72,19 @@ struct Point
 
 struct Map
 {
-    size_t nx = 0, ny = 0;
-    size_t x_max = 0, y_max = 0;
+    using coor_t = uint16_t;
+
+    bool has_diagonal = false;
+    coor_t nx = 0, ny = 0;
+    coor_t x_max = 0, y_max = 0;
 
     std::vector<Point> points_coo;
-    std::vector<size_t> points;
+    std::vector<coor_t> points;
 
     Map() = default;
 
-    Map(Text<std::string>& text)
+    Map(Text<std::string>& text, bool has_diagonal = false)
+      : has_diagonal(has_diagonal)
     {
         store_point(text); // Store all the points as coordinates
         fill();            // Fill the map with the points
@@ -91,6 +97,7 @@ struct Map
             auto p0 = Point(text[i]);
             auto p1 = Point(text[i + 2]);
 
+            // Update max
             if (p0.x > x_max)
                 x_max = p0.x;
             if (p1.x > x_max)
@@ -103,14 +110,21 @@ struct Map
             if (p0.x == p1.x)
             {
                 auto inc = p0.y < p1.y ? 1 : -1;
-                for (uint32_t y = p0.y; y != p1.y + inc; y = y + inc)
-                    points_coo.push_back(Point(p0.x, y));
+                for (coor_t y = p0.y; y != p1.y + inc; y = y + inc)
+                    points_coo.emplace_back(Point(p0.x, y));
             }
             if (p0.y == p1.y)
             {
                 auto inc = p0.x < p1.x ? 1 : -1;
-                for (uint32_t x = p0.x; x != p1.x + inc; x = x + inc)
-                    points_coo.push_back(Point(x, p0.y));
+                for (coor_t x = p0.x; x != p1.x + inc; x = x + inc)
+                    points_coo.emplace_back(Point(x, p0.y));
+            }
+            if (has_diagonal && (abs(p0.x - p1.x) == abs(p0.y - p1.y)))
+            {
+                auto inc_x = p0.x < p1.x ? 1 : -1;
+                auto inc_y = p0.y < p1.y ? 1 : -1;
+                for (coor_t x = p0.x, y = p0.y; x != p1.x + inc_x && y != p1.y + inc_y; x = x + inc_x, y = y + inc_y)
+                    points_coo.emplace_back(Point(x, y));
             }
         }
 
@@ -120,16 +134,16 @@ struct Map
 
     void fill()
     {
-        points = std::vector<size_t>(nx * ny, 0);
+        points = std::vector<coor_t>(nx * ny, 0);
         for (Point& p : points_coo)
             points[p.x + nx * p.y]++;
     }
 
     void draw()
     {
-        for (size_t y = 0; y < ny; y++)
+        for (coor_t y = 0; y < ny; y++)
         {
-            for (size_t x = 0; x < nx; x++)
+            for (coor_t x = 0; x < nx; x++)
             {
                 if (points[x + ny * y] == 0)
                     fmt::print(".");
@@ -146,57 +160,5 @@ struct Map
         for (auto& point : points_coo)
             point.print();
         fmt::print("Max point: ({}, {})\n", x_max, y_max);
-    }
-};
-
-// Inherit from Map
-struct MapDiag : public Map
-{
-    MapDiag(Text<std::string>& text)
-      : Map()
-    {
-        store_point(text);
-        fill();
-    }
-
-    void store_point(Text<std::string>& text)
-    {
-        for (size_t i = 0; i < text.size(); i = i + 3)
-        {
-            auto p0 = Point(text[i]);
-            auto p1 = Point(text[i + 2]);
-
-            if (p0.x > x_max)
-                x_max = p0.x;
-            if (p1.x > x_max)
-                x_max = p0.x;
-            if (p0.y > y_max)
-                y_max = p0.y;
-            if (p1.x > x_max)
-                y_max = p0.y;
-
-            if (p0.x == p1.x)
-            {
-                auto inc = p0.y < p1.y ? 1 : -1;
-                for (uint32_t y = p0.y; y != p1.y + inc; y = y + inc)
-                    points_coo.push_back(Point(p0.x, y));
-            }
-            if (p0.y == p1.y)
-            {
-                auto inc = p0.x < p1.x ? 1 : -1;
-                for (uint32_t x = p0.x; x != p1.x + inc; x = x + inc)
-                    points_coo.push_back(Point(x, p0.y));
-            }
-            if (abs(p0.x - p1.x) == abs(p0.y - p1.y))
-            {
-                auto inc_x = p0.x < p1.x ? 1 : -1;
-                auto inc_y = p0.y < p1.y ? 1 : -1;
-                for (uint32_t x = p0.x, y = p0.y; x != p1.x + inc_x && y != p1.y + inc_y; x = x + inc_x, y = y + inc_y)
-                    points_coo.push_back(Point(x, y));
-            }
-        }
-
-        nx = x_max + 1;
-        ny = y_max + 1;
     }
 };

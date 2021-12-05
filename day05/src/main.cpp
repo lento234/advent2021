@@ -34,7 +34,7 @@ static uint32_t problem2(std::string filename)
     auto text = Text<std::string>(filename);
 
     // Generate map and get points
-    auto map = MapDiag(text);
+    auto map = Map(text, true);
     auto points = map.points; // Get map points
 
     // Find number of points larger than 2
