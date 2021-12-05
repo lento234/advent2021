@@ -1,16 +1,4 @@
 # Day 1
-## Answer
-
-    🎄 Advent of Code: Day 1 🎄
-    ---------------------------
-
-    >> [Test] Problem 1: answer = 7 [PASS]
-    >> [Test] Problem 2: answer = 5 [PASS]
-
-    >> Problem 1: answer = 1393
-    >> Problem 2: answer = 1359
-
-    >> [Summary] Total elapsed = 263 μs
 
 \-\-- Day 1: Sonar Sweep \-\--
 ------------------------------

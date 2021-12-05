@@ -29,6 +29,19 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 |  13   |  14   |          15          |          16          |          17          |             18              |          19          |
 |  20   |  21   |          22          |          23          |          24          | [🎁](https://bit.ly/3pnrWiY) |                      |
 
+## Benchmark
+
+Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. 
+
+
+|  Day  | Problem                  |  Duration |
+| :---: | :----------------------- | --------: |
+| `01`  | **Sonar Sweep**          |  `229 μs` |
+| `02`  | **Dive!**                |  `285 μs` |
+| `03`  | **Binary Diagnostic**    |  `302 μs` |
+| `04`  | **Giant Squid**          | `1021 μs` |
+| `05`  | **Hydrothermal Venture** | `3185 μs` |
+
 ## Build 
 
 ### Docker
@@ -51,7 +64,7 @@ Run directly from the docker image
 
         cd dayxx
         make build
-        ./dayxx
+        cd build && ./dayxx
 
 #### Install dependencies
 

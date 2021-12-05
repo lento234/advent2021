@@ -1,18 +1,5 @@
 # Day 05
 
-## Answer
-
-    🎄 Advent of Code: Day 5 🎄
-    ---------------------------
-
-    >> [Test] Problem 1: answer = 5 [PASS]
-    >> [Test] Problem 2: answer = 12 [PASS]
-
-    >> Problem 1: answer = 6283
-    >> Problem 2: answer = 18864
-
-    >> [Summary] Total elapsed = 9958 μs
-    
 ## \-\-- Day 5: Hydrothermal Venture \-\--
 
 You come across a field of [hydrothermal

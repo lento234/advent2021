@@ -1,18 +1,5 @@
 # Day 02
 
-## Answer
-
-    🎄 Advent of Code: Day 2 🎄
-    ---------------------------
-
-    >> [Test] Problem 1: answer = 150 [PASS]
-    >> [Test] Problem 2: answer = 900 [PASS]
-
-    >> Problem 1: answer = 2091984
-    >> Problem 2: answer = 2086261056
-
-    >> [Summary] Total elapsed = 1426 μs
-
 \-\-- Day 2: Dive! \-\--
 ------------------------
 
@@ -59,7 +46,7 @@ final horizontal position by your final depth?*
 
 Your puzzle answer was `2091984`.
 
-\-\-- Part Two \-\-- {#part2}
+\-\-- Part Two \-\--
 --------------------
 
 Based on your calculations, the planned course doesn\'t seem to make any

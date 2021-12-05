@@ -1,18 +1,5 @@
 # Day 03
 
-## Answer
-
-    🎄 Advent of Code: Day 3 🎄
-    ---------------------------
-
-    >> [Test] Problem 1: answer = 198 [PASS]
-    >> [Test] Problem 2: answer = 230 [PASS]
-
-    >> Problem 1: answer = 2967914
-    >> Problem 2: answer = 7041258
-
-    >> [Summary] Total elapsed = 1851 μs
-
 \-\-- Day 3: Binary Diagnostic \-\--
 ------------------------------------
 

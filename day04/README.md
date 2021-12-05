@@ -1,19 +1,5 @@
 # Day 04
 
-## Answer
-
-    🎄 Advent of Code: Day 4 🎄
-    ---------------------------
-
-    >> [Test] Problem 1: answer = 4512 [PASS]
-    >> [Test] Problem 2: answer = 1924 [PASS]
-
-    >> Problem 1: answer = 8136
-    >> Problem 2: answer = 12738
-
-    >> [Summary] Total elapsed = 2722 μs
-
-
 \-\-- Day 4: Giant Squid \-\--
 ------------------------------
 
