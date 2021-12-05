@@ -17,30 +17,34 @@ static uint32_t problem1(std::string filename)
 
     // Generate map and get points
     auto map = Map(text);
-
     auto points = map.points; // Get map points
-    
+
     // Find number of points larger than 2
     uint32_t answer = 0;
     for (auto& point : points)
         if (point >= 2)
             answer++;
-    
+
     return answer;
 }
 
-/*
-static int64_t problem2(std::string filename)
+static uint32_t problem2(std::string filename)
 {
     // Read file
     auto text = Text<std::string>(filename);
 
-    // Answer
-    int64_t answer = 0;
+    // Generate map and get points
+    auto map = MapDiag(text);
+    auto points = map.points; // Get map points
+
+    // Find number of points larger than 2
+    uint32_t answer = 0;
+    for (auto& point : points)
+        if (point >= 2)
+            answer++;
 
     return answer;
 }
-*/
 
 int main()
 {
@@ -58,19 +62,14 @@ int main()
                test_answer1,
                pass_or_fail(test_answer1, 5));
 
-    /*
-    int64_t test_answer2 = problem2("test_input.txt");
+    uint32_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail(test_answer2, 0));
-    */
+               pass_or_fail(test_answer2, 12));
 
-    // Problem 1
-    // fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
+    //Problem 1
+    fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
 
-    /*
-    // // Problem 2
-    int64_t answer2 = problem2("input.txt");
-    fmt::print(">> Problem 2: answer = {}\n", answer2);
-    */
+    // Problem 2
+    fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
 }

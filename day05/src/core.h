@@ -13,7 +13,7 @@ struct Point
     Point() = default;
 
     Point(std::string& line)
-      : x(std::stoi(line.substr(0, line.find(",")))), y(std::stoi(line.substr(line.find(",")+1)))
+      : x(std::stoi(line.substr(0, line.find(",")))), y(std::stoi(line.substr(line.find(",") + 1)))
     {
     }
 
@@ -75,6 +75,8 @@ struct Map
 
     std::vector<Point> points_coo;
     std::vector<size_t> points;
+
+    Map() = default;
 
     Map(Text<std::string>& text)
     {
@@ -144,5 +146,57 @@ struct Map
         for (auto& point : points_coo)
             point.print();
         fmt::print("Max point: ({}, {})\n", x_max, y_max);
+    }
+};
+
+// Inherit from Map
+struct MapDiag : public Map
+{
+    MapDiag(Text<std::string>& text)
+      : Map()
+    {
+        store_point(text);
+        fill();
+    }
+
+    void store_point(Text<std::string>& text)
+    {
+        for (size_t i = 0; i < text.size(); i = i + 3)
+        {
+            auto p0 = Point(text[i]);
+            auto p1 = Point(text[i + 2]);
+
+            if (p0.x > x_max)
+                x_max = p0.x;
+            if (p1.x > x_max)
+                x_max = p0.x;
+            if (p0.y > y_max)
+                y_max = p0.y;
+            if (p1.x > x_max)
+                y_max = p0.y;
+
+            if (p0.x == p1.x)
+            {
+                auto inc = p0.y < p1.y ? 1 : -1;
+                for (uint32_t y = p0.y; y != p1.y + inc; y = y + inc)
+                    points_coo.push_back(Point(p0.x, y));
+            }
+            if (p0.y == p1.y)
+            {
+                auto inc = p0.x < p1.x ? 1 : -1;
+                for (uint32_t x = p0.x; x != p1.x + inc; x = x + inc)
+                    points_coo.push_back(Point(x, p0.y));
+            }
+            if (abs(p0.x - p1.x) == abs(p0.y - p1.y))
+            {
+                auto inc_x = p0.x < p1.x ? 1 : -1;
+                auto inc_y = p0.y < p1.y ? 1 : -1;
+                for (uint32_t x = p0.x, y = p0.y; x != p1.x + inc_x && y != p1.y + inc_y; x = x + inc_x, y = y + inc_y)
+                    points_coo.push_back(Point(x, y));
+            }
+        }
+
+        nx = x_max + 1;
+        ny = y_max + 1;
     }
 };
