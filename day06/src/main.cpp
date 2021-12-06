@@ -56,5 +56,5 @@ int main()
     fmt::print(">> Problem 1: answer = {}\n", problem("input.txt", 80));
 
     // Problem 2
-    // fmt::print(">> Problem 2: answer = {}\n", problem("input.txt", 256));
+    fmt::print(">> Problem 2: answer = {}\n", problem("input.txt", 256));
 }

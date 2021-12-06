@@ -22,12 +22,12 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 ## Calendar
 
-|   M   |   T   |          W           |          T           |          F           |              S              |          S           |
-| :---: | :---: | :------------------: | :------------------: | :------------------: | :-------------------------: | :------------------: |
-|       |       | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md) |    [4](day04/README.md)     | [5](day05/README.md) |
-|   6   |   7   |          8           |          9           |          10          |             11              |          12          |
-|  13   |  14   |          15          |          16          |          17          |             18              |          19          |
-|  20   |  21   |          22          |          23          |          24          | [🎁](https://bit.ly/3pnrWiY) |                      |
+|          M           |   T   |          W           |          T           |          F           |              S              |          S           |
+| :------------------: | :---: | :------------------: | :------------------: | :------------------: | :-------------------------: | :------------------: |
+|                      |       | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md) |    [4](day04/README.md)     | [5](day05/README.md) |
+| [6](day06/README.md) |   7   |          8           |          9           |          10          |             11              |          12          |
+|          13          |  14   |          15          |          16          |          17          |             18              |          19          |
+|          20          |  21   |          22          |          23          |          24          | [🎁](https://bit.ly/3pnrWiY) |                      |
 
 ## Benchmark
 
@@ -41,6 +41,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | `03`  | **Binary Diagnostic**    |  `302 μs` |
 | `04`  | **Giant Squid**          | `1021 μs` |
 | `05`  | **Hydrothermal Venture** | `3185 μs` |
+| `06`  | **Lanternfish**          |       `s` |
 
 ## Build 
 
