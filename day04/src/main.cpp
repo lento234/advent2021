@@ -7,7 +7,8 @@
 #include <string>
 #include <vector>
 
-#include <util.h>
+#include <utils/parser.h>
+#include <utils/timer.h>
 
 struct Board
 {
@@ -138,7 +139,7 @@ static std::pair<int64_t, Board> its_a_final_bingo(const std::vector<uint8_t>& d
 static int64_t problem1(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     // Store all draw numbers
     auto draws = parse_draws(text[0]);
@@ -163,7 +164,7 @@ static int64_t problem1(std::string filename)
 static int64_t problem2(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     // Store all draw numbers
     auto draws = parse_draws(text[0]);
@@ -187,7 +188,7 @@ static int64_t problem2(std::string filename)
 
 int main()
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    auto timer = utils::Timer();
 
     constexpr uint8_t day = 04;
 
@@ -199,12 +200,12 @@ int main()
     int64_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail<uint16_t>(test_answer1, 4512));
+               utils::pass_or_fail<uint16_t>(test_answer1, 4512));
 
     int64_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail<uint16_t>(test_answer2, 1924));
+               utils::pass_or_fail<uint16_t>(test_answer2, 1924));
 
     // Problem 1
     int64_t answer1 = problem1("input.txt");
@@ -214,8 +215,4 @@ int main()
     int64_t answer2 = problem2("input.txt");
     fmt::print(">> Problem 2: answer = {}\n", answer2);
 
-    // Summary
-    auto end = std::chrono::high_resolution_clock::now();
-    fmt::print("\n>> [Summary] Total elapsed = {} μs\n\n",
-               std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
 }

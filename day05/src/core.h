@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 
-#include <util.h>
+#include <utils/parser.h>
 
 struct Point
 {
@@ -83,14 +83,14 @@ struct Map
 
     Map() = default;
 
-    Map(Text<std::string>& text, bool has_diagonal = false)
+    Map(utils::Text<std::string>& text, bool has_diagonal = false)
       : has_diagonal(has_diagonal)
     {
         store_point(text); // Store all the points as coordinates
         fill();            // Fill the map with the points
     }
 
-    void store_point(Text<std::string>& text)
+    void store_point(utils::Text<std::string>& text)
     {
         for (size_t i = 0; i < text.size(); i = i + 3)
         {

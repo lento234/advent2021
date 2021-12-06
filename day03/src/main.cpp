@@ -6,10 +6,11 @@
 #include <string>
 #include <vector>
 
-#include <util.h>
+#include <utils/parser.h>
+#include <utils/timer.h>
 
 template <size_t N>
-static std::string decode_text(Text<std::string>& text)
+static std::string decode_text(utils::Text<std::string>& text)
 {
     std::vector<size_t> counts(N, 0);
 
@@ -48,7 +49,7 @@ template <size_t N>
 static int64_t problem1(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     // Decode text
     auto bits = decode_text<N>(text);
@@ -66,7 +67,7 @@ template <size_t N>
 static int64_t problem2(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
     auto raw_text = text.raw;
 
     auto oxy = std::bitset<N>(radix_filter(raw_text, 1)[0]).to_ulong(); // sort by 1
@@ -80,7 +81,7 @@ static int64_t problem2(std::string filename)
 
 int main()
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    auto timer = utils::Timer();
 
     constexpr uint8_t day = 03;
 
@@ -92,12 +93,12 @@ int main()
     int64_t test_answer1 = problem1<5>("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail<uint8_t>(test_answer1, 198));
+               utils::pass_or_fail<uint8_t>(test_answer1, 198));
 
     int64_t test_answer2 = problem2<5>("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail<uint8_t>(test_answer2, 230));
+               utils::pass_or_fail<uint8_t>(test_answer2, 230));
 
     // // Problem 1
     int64_t answer1 = problem1<12>("input.txt");
@@ -107,8 +108,4 @@ int main()
     int64_t answer2 = problem2<12>("input.txt");
     fmt::print(">> Problem 2: answer = {}\n", answer2);
 
-    // Summary
-    auto end = std::chrono::high_resolution_clock::now();
-    fmt::print("\n>> [Summary] Total elapsed = {} μs\n\n",
-               std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
 }

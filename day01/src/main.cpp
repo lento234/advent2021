@@ -6,12 +6,13 @@
 #include <string>
 #include <vector>
 
-#include <util.h>
+#include <utils/parser.h>
+#include <utils/timer.h>
 
 static uint32_t problem1(std::string filename)
 {
     // Read file
-    auto text = Text<uint32_t>(filename);
+    auto text = utils::Text<uint32_t>(filename);
 
     // Number of valid depths
     uint32_t answer = 0;
@@ -32,7 +33,7 @@ static uint32_t problem1(std::string filename)
 static uint32_t problem2(std::string filename)
 {
     // Read file
-    auto text = Text<uint32_t>(filename);
+    auto text = utils::Text<uint32_t>(filename);
 
     // Answer
     uint32_t answer = 0;
@@ -52,7 +53,7 @@ static uint32_t problem2(std::string filename)
 
 int main()
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    auto timer = utils::Timer();
 
     constexpr uint8_t day = 1;
 
@@ -64,23 +65,16 @@ int main()
     uint32_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail<uint8_t>(test_answer1, 7));
+               utils::pass_or_fail<uint8_t>(test_answer1, 7));
 
     uint32_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail<uint8_t>(test_answer2, 5));
+               utils::pass_or_fail<uint8_t>(test_answer2, 5));
 
     // Problem 1
-    uint32_t answer1 = problem1("input.txt");
-    fmt::print(">> Problem 1: answer = {}\n", answer1);
+    fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
 
     // Problem 2
-    uint32_t answer2 = problem2("input.txt");
-    fmt::print(">> Problem 2: answer = {}\n", answer2);
-
-    // Summary
-    auto end = std::chrono::high_resolution_clock::now();
-    fmt::print("\n>> [Summary] Total elapsed = {} μs\n\n",
-               std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+    fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
 }

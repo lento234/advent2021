@@ -6,12 +6,13 @@
 #include <string>
 #include <vector>
 
-#include <util.h>
+#include <utils/parser.h>
+#include <utils/timer.h>
 
 static int64_t problem1(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     uint8_t cmd;
     int64_t unit, horz = 0, vert = 0;
@@ -39,7 +40,7 @@ static int64_t problem1(std::string filename)
 static int64_t problem2(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     uint8_t cmd;
     int64_t unit, horz = 0, vert = 0, aim = 0;
@@ -72,7 +73,7 @@ static int64_t problem2(std::string filename)
 
 int main()
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    auto timer = utils::Timer();
 
     constexpr uint8_t day = 2;
 
@@ -84,12 +85,12 @@ int main()
     int64_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail<uint16_t>(test_answer1, 150));
+               utils::pass_or_fail<uint16_t>(test_answer1, 150));
 
     int32_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail<uint16_t>(test_answer2, 900));
+               utils::pass_or_fail<uint16_t>(test_answer2, 900));
 
     // Problem 1
     fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
@@ -97,8 +98,4 @@ int main()
     // Problem 2
     fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
 
-    // Summary
-    auto end = std::chrono::high_resolution_clock::now();
-    fmt::print("\n>> [Summary] Total elapsed = {} μs\n\n",
-               std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
 }
