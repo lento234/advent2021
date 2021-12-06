@@ -43,16 +43,16 @@ int main()
     int64_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail(test_answer1, 0));
+               pass_or_fail<uint32_t>(test_answer1, 0));
 
-    int64_t test_answer2 = problem2("test_input.txt");
-    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-               test_answer2,
-               pass_or_fail(test_answer2, 0));
+    // int64_t test_answer2 = problem2("test_input.txt");
+    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+    //            test_answer2,
+    //            pass_or_fail(test_answer2, 0));
 
-    // Problem 1
-    fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
+    // // Problem 1
+    // fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
 
-    // Problem 2
-    fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
+    // // Problem 2
+    // fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
 }

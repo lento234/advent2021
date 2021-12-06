@@ -92,12 +92,12 @@ int main()
     int64_t test_answer1 = problem1<5>("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail(test_answer1, 198));
+               pass_or_fail<uint8_t>(test_answer1, 198));
 
     int64_t test_answer2 = problem2<5>("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail(test_answer2, 230));
+               pass_or_fail<uint8_t>(test_answer2, 230));
 
     // // Problem 1
     int64_t answer1 = problem1<12>("input.txt");

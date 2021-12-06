@@ -60,12 +60,12 @@ int main()
     uint32_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail(test_answer1, 5));
+               pass_or_fail<uint8_t>(test_answer1, 5));
 
     uint32_t test_answer2 = problem2("test_input.txt");
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
-               pass_or_fail(test_answer2, 12));
+               pass_or_fail<uint8_t>(test_answer2, 12));
 
     //Problem 1
     fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));

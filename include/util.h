@@ -6,7 +6,8 @@
 #include <string>
 #include <vector>
 
-inline std::string pass_or_fail(uint32_t answer, uint32_t truth)
+template<typename T>
+inline std::string pass_or_fail(T answer, T truth)
 {
     return answer == truth ? "\x1B[1m\x1B[32mPASS\033[0m" : "\x1B[1m\x1B[31mFAIL\033[0m (=" + std::to_string(truth) + ")";
 }
