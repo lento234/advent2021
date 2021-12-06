@@ -73,7 +73,7 @@ Run directly from the docker image
     
     apt install build-essential cmake libfmt-dev curl pandoc
 
-**Arch**:
+**Arch Linux**:
 
     pacman -S base-devel cmake curl pandoc fmt
 
