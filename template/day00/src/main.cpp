@@ -5,12 +5,13 @@
 #include <string>
 #include <vector>
 
-#include <util.h>
+#include <utils/parser.h>
+#include <utils/timer.h>
 
 static int64_t problem1(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     // Answer
     int64_t answer = 0;
@@ -21,7 +22,7 @@ static int64_t problem1(std::string filename)
 static int64_t problem2(std::string filename)
 {
     // Read file
-    auto text = Text<std::string>(filename);
+    auto text = utils::Text<std::string>(filename);
 
     // Answer
     int64_t answer = 0;
@@ -31,7 +32,7 @@ static int64_t problem2(std::string filename)
 
 int main()
 {
-    auto timeit = Timer();
+    auto timeit = utils::Timer<std::chrono::milliseconds>();
 
     constexpr uint8_t day = 00;
 
@@ -43,12 +44,12 @@ int main()
     int64_t test_answer1 = problem1("test_input.txt");
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               pass_or_fail<uint32_t>(test_answer1, 0));
+               utils::pass_or_fail<uint32_t>(test_answer1, 0));
 
     // int64_t test_answer2 = problem2("test_input.txt");
     // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
     //            test_answer2,
-    //            pass_or_fail(test_answer2, 0));
+    //            utils::pass_or_fail<uint32_t>(test_answer2, 0));
 
     // // Problem 1
     // fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
