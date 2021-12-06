@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fmt/core.h>
+#include <numeric>
 #include <string>
 #include <vector>
 
@@ -13,6 +14,7 @@ struct Lanternfish_School
 
     size_t day = 0;
     size_t n_new_fishes = 0;
+    size_t n_fishes = 0;
 
     Lanternfish_School() = default;
 
@@ -24,7 +26,7 @@ struct Lanternfish_School
 
     void evolve()
     {
-        // It's a beautiful day at the lake.
+        // It's a beautiful new day under the sea!
         day++;
 
         // Let's multiply
@@ -57,9 +59,6 @@ struct Lanternfish_School
 
     size_t population_size() const
     {
-        value_t sum = 0;
-        for (auto& fish : population_density)
-            sum += fish;
-        return sum;
+        return std::accumulate(population_density.begin(), population_density.end(), n_fishes);
     }
 };
