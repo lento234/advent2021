@@ -34,7 +34,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. 
 
 
-|  Day  | Problem                  |  Duration |
+|  Day  | Problem                  |   Runtime |
 | :---: | :----------------------- | --------: |
 | `01`  | **Sonar Sweep**          |  `229 μs` |
 | `02`  | **Dive!**                |  `285 μs` |

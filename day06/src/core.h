@@ -9,7 +9,7 @@ struct Lanternfish_School
 {
     using value_t = uint64_t;
 
-    const uint8_t n_populations = 9;
+    constexpr static uint8_t n_populations = 9;
     std::vector<value_t> population_density = std::vector<value_t>(n_populations, 0);
 
     size_t day = 0;
