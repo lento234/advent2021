@@ -11,6 +11,8 @@ RUN apt-get update \
     build-essential \
     cmake \
     libfmt-dev \
+    curl \
+    pandoc \
     && rm -rf /var/lib/apt/lists/*
 
 # Change working directory

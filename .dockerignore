@@ -4,4 +4,4 @@
 .gitignore/
 build/
 day*/build/
-.cookie
+tools/.cookie
