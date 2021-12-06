@@ -16,24 +16,25 @@ static int64_t problem(std::string filename, const size_t& n_days)
     auto text = utils::Text<std::string>(filename);
 
     // Parse initial population
-    auto initial_population = utils::split_numbers<uint8_t>(text[0], ',');
+    auto initial_population = utils::split_numbers<uint64_t>(text[0], ',');
 
     // Initialize the lanternfish school
     auto lanternfish_school = Lanternfish_School(initial_population);
 
-    // Run the simulation
-    for (size_t day = 1; day < n_days + 1; ++day)
-        lanternfish_school.next_day();
 
+    // Run the simulation
+    for (size_t i = 0; i < n_days; ++i)
+        lanternfish_school.evolve();
+    
     // Answer
-    int64_t answer = lanternfish_school.size();
+    int64_t answer = lanternfish_school.population_size();
 
     return answer;
 }
 
 int main()
 {
-    auto timeit = utils::Timer<std::chrono::seconds>();
+    auto timeit = utils::Timer();
 
     constexpr uint8_t day = 06;
 

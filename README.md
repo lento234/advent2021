@@ -3,7 +3,7 @@
 # 🎅🎄 Advent of Code 2021 ☃️❄️
  
 
-![](https://img.shields.io/badge/stars%20⭐-10-gold.svg)
+![](https://img.shields.io/badge/stars%20⭐-12-gold.svg)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
@@ -41,7 +41,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | `03`  | **Binary Diagnostic**    |  `302 μs` |
 | `04`  | **Giant Squid**          | `1021 μs` |
 | `05`  | **Hydrothermal Venture** | `3185 μs` |
-| `06`  | **Lanternfish**          |       `s` |
+| `06`  | **Lanternfish**          |   `95 μs` |
 
 ## Build 
 
