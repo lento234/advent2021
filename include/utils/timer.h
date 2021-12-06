@@ -8,29 +8,31 @@ namespace utils
 template <typename T = std::chrono::microseconds>
 class Timer
 {
-public:
-    std::chrono::time_point<std::chrono::system_clock> start;
     using time_t = T;
-    std::string unit = "us";
 
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    std::string unit = "μs";
+
+public:
     Timer()
     {
+        // Start clock
         start = std::chrono::high_resolution_clock::now();
-        if (typeid(T).name() == typeid(std::chrono::microseconds).name())
+
+        // Determine the unit
+        if (std::is_same<T, std::chrono::microseconds>::value)
             unit = "μs";
-        else if (typeid(T).name() == typeid(std::chrono::milliseconds).name())
+        else if (std::is_same<T, std::chrono::milliseconds>::value)
             unit = "ms";
-        else if (typeid(T).name() == typeid(std::chrono::seconds).name())
+        else if (std::is_same<T, std::chrono::seconds>::value)
             unit = "s";
-        else if (typeid(T).name() == typeid(std::chrono::minutes).name())
+        else if (std::is_same<T, std::chrono::minutes>::value)
             unit = "min";
-        else if (typeid(T).name() == typeid(std::chrono::hours).name())
-            unit = "h";
     }
 
     ~Timer()
     {
-        auto end = std::chrono::high_resolution_clock::now();
+        end = std::chrono::high_resolution_clock::now();
         fmt::print("\n>> [Summary] Total elapsed = {} {}\n\n",
                    std::chrono::duration_cast<time_t>(end - start).count(),
                    unit);
