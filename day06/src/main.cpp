@@ -21,11 +21,10 @@ static int64_t problem(std::string filename, const size_t& n_days)
     // Initialize the lanternfish school
     auto lanternfish_school = Lanternfish_School(initial_population);
 
-
     // Run the simulation
     for (size_t i = 0; i < n_days; ++i)
         lanternfish_school.evolve();
-    
+
     // Answer
     int64_t answer = lanternfish_school.population_size();
 
