@@ -1,14 +1,15 @@
 all: build run
 
-MAIN=day02
-
 build:
 	cmake -H. -B build && make -C build
 
 run:
-	cd build && ./$(MAIN)
+	cd build && ./day02
 
 clean:
 	$(RM) -rvf build
+
+mem-prof:
+	cd build && valgrind ./day02
 
 .PHONY: all clean run build

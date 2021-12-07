@@ -34,15 +34,15 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. 
 
 
-|  Day  | Problem                     |   Runtime |
-| :---: | :-------------------------- | --------: |
-| `01`  | **Sonar Sweep**             |  `229 μs` |
-| `02`  | **Dive!**                   |  `285 μs` |
-| `03`  | **Binary Diagnostic**       |  `302 μs` |
-| `04`  | **Giant Squid**             | `1021 μs` |
-| `05`  | **Hydrothermal Venture**    | `3185 μs` |
-| `06`  | **Lanternfish**             |   `95 μs` |
-| `07`  | **The Treachery of Whales** |  `427 μs` |
+|            Day             | Problem                     | Runtime (μs) | Memory (kB) |
+| :------------------------: | :-------------------------- | -----------: | ----------: |
+| [`01`](day01/src/main.cpp) | **Sonar Sweep**             |          229 |         138 |
+| [`02`](day02/src/main.cpp) | **Dive!**                   |          285 |         364 |
+| [`03`](day03/src/main.cpp) | **Binary Diagnostic**       |          302 |         685 |
+| [`04`](day04/src/main.cpp) | **Giant Squid**             |         1021 |         697 |
+| [`05`](day05/src/main.cpp) | **Hydrothermal Venture**    |         3185 |       11096 |
+| [`06`](day06/src/main.cpp) | **Lanternfish**             |           95 |         126 |
+| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          427 |         137 |
 
 ## Build 
 
@@ -72,7 +72,7 @@ Run directly from the docker image
 
 **Ubuntu**:
     
-    apt install build-essential cmake libfmt-dev curl pandoc
+    apt install build-essential cmake libfmt-dev curl pandoc valgrind
 
 **Arch Linux**:
 

@@ -9,4 +9,7 @@ run:
 clean:
 	$(RM) -rvf build
 
+mem-prof:
+	cd build && valgrind ./day03
+
 .PHONY: all clean run build

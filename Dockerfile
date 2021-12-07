@@ -13,6 +13,7 @@ RUN apt-get update \
     libfmt-dev \
     curl \
     pandoc \
+    valgrind \
     && rm -rf /var/lib/apt/lists/*
 
 # Change working directory
