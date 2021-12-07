@@ -31,7 +31,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 ## Benchmark
 
-Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. 
+Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. Memory usage profiled using `valgrind`.
 
 
 |            Day             | Problem                     | Runtime (μs) | Memory (kB) |
@@ -42,7 +42,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | [`04`](day04/src/main.cpp) | **Giant Squid**             |         1021 |         697 |
 | [`05`](day05/src/main.cpp) | **Hydrothermal Venture**    |         3185 |       11096 |
 | [`06`](day06/src/main.cpp) | **Lanternfish**             |           95 |         126 |
-| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          427 |         137 |
+| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          177 |         137 |
 
 ## Build 
 

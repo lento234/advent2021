@@ -1,5 +1,6 @@
 // Advent of Code: Day 07
 // Lento Manickathan
+#include <algorithm>
 #include <chrono>
 #include <fmt/ranges.h>
 #include <numeric>
