@@ -3,7 +3,7 @@
 # 🎅🎄 Advent of Code 2021 ☃️❄️
  
 
-![](https://img.shields.io/badge/stars%20⭐-12-gold.svg)
+![](https://img.shields.io/badge/stars%20⭐-14-gold.svg)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
@@ -22,26 +22,27 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 ## Calendar
 
-|          M           |   T   |          W           |          T           |          F           |              S              |          S           |
-| :------------------: | :---: | :------------------: | :------------------: | :------------------: | :-------------------------: | :------------------: |
-|                      |       | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md) |    [4](day04/README.md)     | [5](day05/README.md) |
-| [6](day06/README.md) |   7   |          8           |          9           |          10          |             11              |          12          |
-|          13          |  14   |          15          |          16          |          17          |             18              |          19          |
-|          20          |  21   |          22          |          23          |          24          | [🎁](https://bit.ly/3pnrWiY) |                      |
+|          M           |          T           |          W           |          T           |          F           |              S              |          S           |
+| :------------------: | :------------------: | :------------------: | :------------------: | :------------------: | :-------------------------: | :------------------: |
+|                      |                      | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md) |    [4](day04/README.md)     | [5](day05/README.md) |
+| [6](day06/README.md) | [7](day07/README.md) |          8           |          9           |          10          |             11              |          12          |
+|          13          |          14          |          15          |          16          |          17          |             18              |          19          |
+|          20          |          21          |          22          |          23          |          24          | [🎁](https://bit.ly/3pnrWiY) |                      |
 
 ## Benchmark
 
 Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. 
 
 
-|  Day  | Problem                  |   Runtime |
-| :---: | :----------------------- | --------: |
-| `01`  | **Sonar Sweep**          |  `229 μs` |
-| `02`  | **Dive!**                |  `285 μs` |
-| `03`  | **Binary Diagnostic**    |  `302 μs` |
-| `04`  | **Giant Squid**          | `1021 μs` |
-| `05`  | **Hydrothermal Venture** | `3185 μs` |
-| `06`  | **Lanternfish**          |   `95 μs` |
+|  Day  | Problem                     |    Runtime |
+| :---: | :-------------------------- | ---------: |
+| `01`  | **Sonar Sweep**             |   `229 μs` |
+| `02`  | **Dive!**                   |   `285 μs` |
+| `03`  | **Binary Diagnostic**       |   `302 μs` |
+| `04`  | **Giant Squid**             |  `1021 μs` |
+| `05`  | **Hydrothermal Venture**    |  `3185 μs` |
+| `06`  | **Lanternfish**             |    `95 μs` |
+| `07`  | **The Treachery of Whales** | `96414 μs` |
 
 ## Build 
 
