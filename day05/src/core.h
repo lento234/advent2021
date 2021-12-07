@@ -134,9 +134,9 @@ struct Map
 
     void fill()
     {
-        points = std::vector<coor_t>(nx * ny, 0);
-        for (Point& p : points_coo)
-            points[p.x + nx * p.y]++;
+        points.resize(nx * ny, 0);
+        for (auto& p : points_coo)
+            ++points[p.x + nx * p.y];
     }
 
     void draw()

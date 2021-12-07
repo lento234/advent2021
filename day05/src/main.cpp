@@ -11,7 +11,7 @@
 
 #include "core.h"
 
-static uint32_t problem1(std::string filename)
+static uint32_t problem1(const std::string& filename)
 {
     // Read file
     auto text = utils::Text<std::string>(filename);
@@ -29,7 +29,7 @@ static uint32_t problem1(std::string filename)
     return answer;
 }
 
-static uint32_t problem2(std::string filename)
+static uint32_t problem2(const std::string& filename)
 {
     // Read file
     auto text = utils::Text<std::string>(filename);
