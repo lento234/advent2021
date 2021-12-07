@@ -34,15 +34,15 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. 
 
 
-|  Day  | Problem                     |    Runtime |
-| :---: | :-------------------------- | ---------: |
-| `01`  | **Sonar Sweep**             |   `229 μs` |
-| `02`  | **Dive!**                   |   `285 μs` |
-| `03`  | **Binary Diagnostic**       |   `302 μs` |
-| `04`  | **Giant Squid**             |  `1021 μs` |
-| `05`  | **Hydrothermal Venture**    |  `3185 μs` |
-| `06`  | **Lanternfish**             |    `95 μs` |
-| `07`  | **The Treachery of Whales** | `96414 μs` |
+|  Day  | Problem                     |   Runtime |
+| :---: | :-------------------------- | --------: |
+| `01`  | **Sonar Sweep**             |  `229 μs` |
+| `02`  | **Dive!**                   |  `285 μs` |
+| `03`  | **Binary Diagnostic**       |  `302 μs` |
+| `04`  | **Giant Squid**             | `1021 μs` |
+| `05`  | **Hydrothermal Venture**    | `3185 μs` |
+| `06`  | **Lanternfish**             |   `95 μs` |
+| `07`  | **The Treachery of Whales** |  `427 μs` |
 
 ## Build 
 
