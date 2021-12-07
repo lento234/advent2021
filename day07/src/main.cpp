@@ -10,21 +10,38 @@
 
 static int64_t problem1(utils::Text<std::string>& input)
 {
-    input.print();
+ 
+    std::vector<uint16_t> positions = utils::split_numbers<uint16_t>(input[0], ',');
 
+    uint64_t least_cost = std::numeric_limits<uint64_t>::max();
+    for (auto& i_pos : positions)
+    {
+        uint64_t cost = 0;
+        for (auto& j_pos : positions)
+            cost += std::abs(i_pos - j_pos);
+
+        // Determine least cost
+        least_cost = std::min(least_cost, cost);
+    }
+
+    // Answer
+    int64_t answer = least_cost;
+
+    return answer;
+}
+
+static int64_t problem2(utils::Text<std::string>& input)
+{
+
+    std::vector<uint16_t> positions = utils::split_numbers<uint16_t>(input[0], ',');
+
+    fmt::print("{}\n", positions);
+    
     // Answer
     int64_t answer = 0;
 
     return answer;
 }
-
-// static int64_t problem2(utils::Text<std::string>& input)
-// {
-//     // Answer
-//     int64_t answer = 0;
-
-//     return answer;
-// }
 
 int main()
 {
@@ -42,15 +59,18 @@ int main()
     int64_t test_answer1 = problem1(test_input);
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               utils::pass_or_fail<uint32_t>(test_answer1, 0));
+               utils::pass_or_fail<uint32_t>(test_answer1, 37));
 
-    // int64_t test_answer2 = problem2(test_input);
-    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-    //            test_answer2,
-    //            utils::pass_or_fail<uint32_t>(test_answer2, 0));
+    int64_t test_answer2 = problem2(test_input);
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+               test_answer2,
+               utils::pass_or_fail<uint32_t>(test_answer2, 168));
 
-    // // Problem 1
-    // fmt::print(">> Problem 1: answer = {}\n", problem1("input.txt"));
+    // Read input
+    auto input = utils::Text<std::string>("input.txt");
+
+    // Problem 1
+    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
     // // Problem 2
     // fmt::print(">> Problem 2: answer = {}\n", problem2("input.txt"));
