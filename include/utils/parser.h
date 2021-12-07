@@ -59,14 +59,14 @@ struct Text
         file.close();
     }
 
-    inline size_t size() { return raw.size(); }
+    inline size_t size() const { return raw.size(); }
 
-    void print()
+    void print() const
     {
         fmt::print("  {}\n\n", fmt::join(raw, "\n  "));
     }
 
-    T& operator[](const size_t i) { return raw[i]; }
+    const T& operator[](const size_t i) { return raw[i]; }
 
     auto begin() { return raw.begin(); }
     auto end() { return raw.end(); }
