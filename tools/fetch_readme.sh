@@ -2,6 +2,8 @@
 
 DAY=$1
 
+echo -e "# Day $DAY\n" > ../day$DAY/README.md
+
 # Fetch day $DAY using curl and cookie
 # convert from HTML to pandoc
 # delete all unwanted lines and HTML tags containing {}
