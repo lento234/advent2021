@@ -11,20 +11,31 @@
 static inline bool stencil_min(const std::vector<std::string>& height, const size_t& i, const size_t& j)
 {
     // clang-format off
-    return (((height[i][j] - '0') < (height[i][j + 1] - '0')) 
-         && ((height[i][j] - '0') < (height[i][j - 1] - '0'))
-         && ((height[i][j] - '0') < (height[i + 1][j] - '0'))
-         && ((height[i][j] - '0') < (height[i - 1][j] - '0')));
+    return (((height[i][j] - '0') < (height[i    ][j + 1] - '0')) 
+         && ((height[i][j] - '0') < (height[i    ][j - 1] - '0'))
+         && ((height[i][j] - '0') < (height[i + 1][j    ] - '0'))
+         && ((height[i][j] - '0') < (height[i - 1][j    ] - '0')));
     // clang-format on
 }
 
+// static inline int32_t stencil_div(const std::vector<std::string>& height, const size_t& i, const size_t& j)
+// {
+//     // clang-format off
+//     return (height[i - 1][j    ] - '0')
+//          + (height[i + 1][j    ] - '0')
+//          + (height[i    ][j - 1] - '0')
+//          + (height[i    ][j + 1] - '0')
+//          - (height[i    ][j    ] - '0') * 4;
+//     // clang-format on
+// }
+
 static uint32_t problem1(utils::Text<std::string>& input)
 {
-    std::vector<std::string> height(input.raw);
+    std::vector<std::string> height = input.raw;
 
     // Pad height with extra row and column and buffer value
     char buffer = '9';
-    size_t ncols = input[0].size();
+    size_t ncols = height[0].size();
 
     // Pad top and bottom
     height.insert(height.begin(), std::string(ncols, buffer));
@@ -48,8 +59,47 @@ static uint32_t problem1(utils::Text<std::string>& input)
     return answer;
 }
 
+static inline uint8_t cell_left(const std::vector<std::string>& height, const size_t& i, const size_t& j)
+{
+    if ((height[i][j] - '0') == 9)
+        return 0;
+    else
+        return 1 + cell_left(height, i, j - 1);
+}
+
 static uint32_t problem2(utils::Text<std::string>& input)
 {
+    std::vector<std::string> height = input.raw;
+
+    // Pad height with extra row and column and buffer value
+    char buffer = '9';
+    size_t ncols = height[0].size();
+
+    // Pad top and bottom
+    height.insert(height.begin(), std::string(ncols, buffer));
+    height.insert(height.end(), std::string(ncols, buffer));
+
+    // Pad left and right
+    for (auto& row : height)
+    {
+        row.insert(row.begin(), buffer);
+        row.insert(row.end(), buffer);
+    }
+
+    std::vector<std::string> field(height);
+    for (size_t i = 1; i < field.size() - 1; ++i)
+    {
+        for (size_t j = 1; j < field[i].size() - 1; ++j)
+        {
+            if (stencil_min(height, i, j))
+            {   
+                uint16_t n = cell_left(height, i, j-1) + cell_right(height, i, j+1); // + cell_up(height, i-1, j) + cell_down(height, i+1, j);
+                fmt::print("{} {} {}\n", i, j, n);
+            }
+        }
+    }
+    fmt::print("{}\n", fmt::join(field, "\n"));
+
     // Answer
     uint32_t answer = 0;
 

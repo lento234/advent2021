@@ -34,7 +34,7 @@ static inline std::vector<T> split_numbers(const std::string& str, const char& d
 }
 
 template <typename T>
-inline std::string pass_or_fail(T answer, T truth)
+inline std::string pass_or_fail(const T& answer, const T& truth)
 {
     return answer == truth ? "\x1B[1m\x1B[32mPASS\033[0m" : "\x1B[1m\x1B[31mFAIL\033[0m (=" + std::to_string(truth) + ")";
 }
@@ -44,7 +44,6 @@ struct Text
 {
     std::vector<T> raw;
 
-    //inline std::vector<std::string> read_file(const std::string& filename)
     Text(const std::string& filename)
     {
         // Read file
@@ -66,7 +65,7 @@ struct Text
         fmt::print("  {}\n\n", fmt::join(raw, "\n  "));
     }
 
-    const T& operator[](const size_t i) { return raw[i]; }
+    const T& operator[](const size_t& i) { return raw[i]; }
 
     auto begin() { return raw.begin(); }
     auto end() { return raw.end(); }
