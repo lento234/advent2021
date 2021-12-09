@@ -31,7 +31,7 @@ int main()
     constexpr uint8_t day = 00;
 
     // Header info
-    fmt::print("\n🎄 Advent of Code: Day {} 🎄\n", day);
+    fmt::print("\n🎄 Advent of Code: Day {:02d} 🎄\n", day);
     fmt::print("---------------------------\n\n");
 
     // Test input
