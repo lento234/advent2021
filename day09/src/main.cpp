@@ -1,6 +1,5 @@
 // Advent of Code: Day 09
 // Lento Manickathan
-#include <chrono>
 #include <fmt/ranges.h>
 #include <string>
 #include <vector>
@@ -12,13 +11,12 @@
 
 static uint32_t problem1(utils::Text<std::string>& input)
 {
-    std::vector<std::string> height = input.raw;
+    std::vector<std::string> height = input.raw; // deep-copy
 
     // Pad height with extra row and column and buffer value
-    size_t ncols = height[0].size();
     // Pad top and bottom
-    height.insert(height.begin(), std::string(ncols, '9'));
-    height.insert(height.end(), std::string(ncols, '9'));
+    height.insert(height.begin(), std::string(height[0].size(), '9'));
+    height.insert(height.end(), std::string(height[0].size(), '9'));
 
     // Pad left and right
     for (auto& row : height)
@@ -40,35 +38,30 @@ static uint32_t problem1(utils::Text<std::string>& input)
 
 static uint32_t problem2(utils::Text<std::string>& input)
 {
-    std::vector<std::string> height = input.raw;
-    std::vector<std::string> visited(height.size(), std::string(height[0].size(), '0'));
-
-    // Pad height with extra row and column and buffer value
-    size_t ncols = height[0].size();
+    std::vector<std::string> height = input.raw; // deep-copy
 
     // Pad top and bottom
-    height.insert(height.begin(), std::string(ncols, '9'));
-    height.insert(height.end(), std::string(ncols, '9'));
-    visited.insert(visited.begin(), std::string(ncols, '1'));
-    visited.insert(visited.end(), std::string(ncols, '1'));
+    height.insert(height.begin(), std::string(height[0].size(), '9'));
+    height.insert(height.end(), std::string(height[0].size(), '9'));
 
     // Pad left and right
     for (size_t i = 0; i < height.size(); ++i)
     {
         height[i].insert(height[i].begin(), '9');
         height[i].insert(height[i].end(), '9');
-        visited[i].insert(visited[i].begin(), '1');
-        visited[i].insert(visited[i].end(), '1');
     }
 
     // Perform watershed and accumulated visited cells
     // https://en.wikipedia.org/wiki/Watershed_(image_processing)
     // Using breadth-first-search (BFS) or Meyer's flooding algorithm
     std::vector<uint16_t> size;
+    std::vector<std::string> visited(height.size(), std::string(height[0].size(), '0'));
+
     for (size_t i = 1; i < visited.size() - 1; ++i)
         for (size_t j = 1; j < visited[i].size() - 1; ++j)
             if (stencil_min(height, i, j))
                 size.push_back(spread(height, visited, i, j));
+
     std::sort(size.begin(), size.end(), std::greater<uint16_t>()); // sort size reversed
 
     // Answer
