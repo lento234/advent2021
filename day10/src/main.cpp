@@ -44,10 +44,6 @@ static uint64_t problem1(utils::Text<std::string>& input)
         std::list<char> nodes;
         answer += dfs(nodes, &line.front());
     }
-    // std::string line = input[0];
-
-    // std::vector<char> nodes;
-    // fmt::print("{}\n", dfs(nodes, &line.front())); //, *line+1));
 
     return answer;
 }
@@ -56,6 +52,17 @@ static uint64_t problem2(utils::Text<std::string>& input)
 {
     // Answer
     uint64_t answer = 0;
+
+    for (auto& line : input)
+    {
+        std::list<char> nodes;
+        if (!dfs(nodes, &line.front())) // has reached end
+        {
+            // Find closing sequence
+            // calculate score from closing sequence
+            fmt::print("{}\n", nodes);
+        }
+    }
 
     return answer;
 }
@@ -73,10 +80,10 @@ int main()
     // Test input
     auto test_input = utils::Text<std::string>("test_input.txt");
 
-    uint64_t test_answer1 = problem1(test_input);
-    fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
-               test_answer1,
-               utils::pass_or_fail<uint64_t>(test_answer1, 26397));
+    // uint64_t test_answer1 = problem1(test_input);
+    // fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
+    //            test_answer1,
+    //            utils::pass_or_fail<uint64_t>(test_answer1, 26397));
 
     uint64_t test_answer2 = problem2(test_input);
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
@@ -84,10 +91,10 @@ int main()
                utils::pass_or_fail<uint64_t>(test_answer2, 288957));
 
     // Real input
-    auto input = utils::Text<std::string>("input.txt");
+    // auto input = utils::Text<std::string>("input.txt");
 
     // Problem 1
-    fmt::print(">> Problem 1: answer = {}\n", problem1(input));
+    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
     // // Problem 2
     // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
