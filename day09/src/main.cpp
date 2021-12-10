@@ -34,18 +34,16 @@ static uint32_t problem1(utils::Text<std::string>& input)
     std::vector<std::string> height = input.raw;
 
     // Pad height with extra row and column and buffer value
-    char buffer = '9';
     size_t ncols = height[0].size();
-
     // Pad top and bottom
-    height.insert(height.begin(), std::string(ncols, buffer));
-    height.insert(height.end(), std::string(ncols, buffer));
+    height.insert(height.begin(), std::string(ncols, '9'));
+    height.insert(height.end(), std::string(ncols, '9'));
 
     // Pad left and right
     for (auto& row : height)
     {
-        row.insert(row.begin(), buffer);
-        row.insert(row.end(), buffer);
+        row.insert(row.begin(), '9');
+        row.insert(row.end(), '9');
     }
 
     // Answer (if min than 4 neighbours, then covert to int and add 1 to answer)
@@ -59,49 +57,60 @@ static uint32_t problem1(utils::Text<std::string>& input)
     return answer;
 }
 
-static inline uint8_t cell_left(const std::vector<std::string>& height, const size_t& i, const size_t& j)
+static inline uint16_t spread(const std::vector<std::string>& height,
+                              std::vector<std::string>& visited,
+                              const size_t& i,
+                              const size_t& j)
 {
-    if ((height[i][j] - '0') == 9)
+    if ((height[i][j] - '0') == 9 || (visited[i][j] - '0') == 1)
         return 0;
     else
-        return 1 + cell_left(height, i, j - 1);
+    {
+        visited[i][j] = '1';
+        // clang-format off
+        return 1 + spread(height, visited, i-1, j) 
+                 + spread(height, visited, i+1, j) 
+                 + spread(height, visited, i, j-1)
+                 + spread(height, visited, i, j+1);
+        // clang-format on
+    }
 }
 
 static uint32_t problem2(utils::Text<std::string>& input)
 {
     std::vector<std::string> height = input.raw;
+    std::vector<std::string> visited(height.size(), std::string(height[0].size(), '0'));
 
     // Pad height with extra row and column and buffer value
-    char buffer = '9';
     size_t ncols = height[0].size();
 
     // Pad top and bottom
-    height.insert(height.begin(), std::string(ncols, buffer));
-    height.insert(height.end(), std::string(ncols, buffer));
+    height.insert(height.begin(), std::string(ncols, '9'));
+    height.insert(height.end(), std::string(ncols, '9'));
+    visited.insert(visited.begin(), std::string(ncols, '1'));
+    visited.insert(visited.end(), std::string(ncols, '1'));
 
     // Pad left and right
-    for (auto& row : height)
+    for (size_t i = 0; i < height.size(); ++i)
     {
-        row.insert(row.begin(), buffer);
-        row.insert(row.end(), buffer);
+        height[i].insert(height[i].begin(), '9');
+        height[i].insert(height[i].end(), '9');
+        visited[i].insert(visited[i].begin(), '1');
+        visited[i].insert(visited[i].end(), '1');
     }
-
-    std::vector<std::string> field(height);
-    for (size_t i = 1; i < field.size() - 1; ++i)
-    {
-        for (size_t j = 1; j < field[i].size() - 1; ++j)
-        {
+    
+    // Perform watershed and accumulated visited cells
+    // https://en.wikipedia.org/wiki/Watershed_(image_processing)
+    // Using breadth-first-search (BFS) or Meyer's flooding algorithm
+    std::vector<uint16_t> size;
+    for (size_t i = 1; i < visited.size() - 1; ++i)
+        for (size_t j = 1; j < visited[i].size() - 1; ++j)
             if (stencil_min(height, i, j))
-            {   
-                uint16_t n = cell_left(height, i, j-1) + cell_right(height, i, j+1); // + cell_up(height, i-1, j) + cell_down(height, i+1, j);
-                fmt::print("{} {} {}\n", i, j, n);
-            }
-        }
-    }
-    fmt::print("{}\n", fmt::join(field, "\n"));
+                size.push_back(spread(height, visited, i, j));
+    std::sort(size.begin(), size.end(), std::greater<uint16_t>()); // sort size reversed
 
     // Answer
-    uint32_t answer = 0;
+    uint32_t answer = size[0] * size[1] * size[2];
 
     return answer;
 }
@@ -132,9 +141,9 @@ int main()
     // Real input
     auto input = utils::Text<std::string>("input.txt");
 
-    // // Problem 1
+    // Problem 1
     fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
-    // // Problem 2
-    // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
+    // Problem 2
+    fmt::print(">> Problem 2: answer = {}\n", problem2(input));
 }
