@@ -8,26 +8,7 @@
 #include <utils/parser.h>
 #include <utils/timer.h>
 
-static inline bool stencil_min(const std::vector<std::string>& height, const size_t& i, const size_t& j)
-{
-    // clang-format off
-    return (((height[i][j] - '0') < (height[i    ][j + 1] - '0')) 
-         && ((height[i][j] - '0') < (height[i    ][j - 1] - '0'))
-         && ((height[i][j] - '0') < (height[i + 1][j    ] - '0'))
-         && ((height[i][j] - '0') < (height[i - 1][j    ] - '0')));
-    // clang-format on
-}
-
-// static inline int32_t stencil_div(const std::vector<std::string>& height, const size_t& i, const size_t& j)
-// {
-//     // clang-format off
-//     return (height[i - 1][j    ] - '0')
-//          + (height[i + 1][j    ] - '0')
-//          + (height[i    ][j - 1] - '0')
-//          + (height[i    ][j + 1] - '0')
-//          - (height[i    ][j    ] - '0') * 4;
-//     // clang-format on
-// }
+#include "core.h"
 
 static uint32_t problem1(utils::Text<std::string>& input)
 {
@@ -57,25 +38,6 @@ static uint32_t problem1(utils::Text<std::string>& input)
     return answer;
 }
 
-static inline uint16_t spread(const std::vector<std::string>& height,
-                              std::vector<std::string>& visited,
-                              const size_t& i,
-                              const size_t& j)
-{
-    if ((height[i][j] - '0') == 9 || (visited[i][j] - '0') == 1)
-        return 0;
-    else
-    {
-        visited[i][j] = '1';
-        // clang-format off
-        return 1 + spread(height, visited, i-1, j) 
-                 + spread(height, visited, i+1, j) 
-                 + spread(height, visited, i, j-1)
-                 + spread(height, visited, i, j+1);
-        // clang-format on
-    }
-}
-
 static uint32_t problem2(utils::Text<std::string>& input)
 {
     std::vector<std::string> height = input.raw;
@@ -98,7 +60,7 @@ static uint32_t problem2(utils::Text<std::string>& input)
         visited[i].insert(visited[i].begin(), '1');
         visited[i].insert(visited[i].end(), '1');
     }
-    
+
     // Perform watershed and accumulated visited cells
     // https://en.wikipedia.org/wiki/Watershed_(image_processing)
     // Using breadth-first-search (BFS) or Meyer's flooding algorithm
