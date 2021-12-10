@@ -22,9 +22,6 @@ consider the following heightmap:
     8767896789
     9899965678
 
-    1
-   000000000000 
-  102
 Each number corresponds to the height of a particular location, where
 `9` is the highest and `0` is the lowest a location can be.
 
@@ -47,11 +44,62 @@ therefore `15`.
 Find all of the low points on your heightmap. *What is the sum of the
 risk levels of all low points on your heightmap?*
 
-To begin, [get your puzzle input](9/input).
+Your puzzle answer was `631`.
 
-Answer:
+\-\-- Part Two \-\--  
+--------------------
 
-You can also [\[Share[on
-[Twitter](https://twitter.com/intent/tweet?text=%22Smoke+Basin%22+%2D+Day+9+%2D+Advent+of+Code+2021&url=https%3A%2F%2Fadventofcode%2Ecom%2F2021%2Fday%2F9&related=ericwastl&hashtags=AdventOfCode)
-[Mastodon](javascript:void(0);)] \]]  this puzzle.
-:::
+Next, you need to find the largest basins so you know what areas are
+most important to avoid.
+
+A *basin* is all locations that eventually flow downward to a single low
+point. Therefore, every low point has a basin, although some basins are
+very small. Locations of height `9` do not count as being in any basin,
+and all other locations will always be part of exactly one basin.
+
+The *size* of a basin is the number of locations within the basin,
+including the low point. The example above has four basins.
+
+The top-left basin, size `3`:
+
+    2199943210
+    3987894921
+    9856789892
+    8767896789
+    9899965678
+
+The top-right basin, size `9`:
+
+    2199943210
+    3987894921
+    9856789892
+    8767896789
+    9899965678
+
+The middle basin, size `14`:
+
+    2199943210
+    3987894921
+    9856789892
+    8767896789
+    9899965678
+
+The bottom-right basin, size `9`:
+
+    2199943210
+    3987894921
+    9856789892
+    8767896789
+    9899965678
+
+Find the three largest basins and multiply their sizes together. In the
+above example, this is `9 * 14 * 9 = 1134`.
+
+*What do you get if you multiply together the sizes of the three largest
+basins?*
+
+Your puzzle answer was `821560`.
+
+Both parts of this puzzle are complete! They provide two gold stars:
+\*\*
+

@@ -3,7 +3,7 @@
 # 🎅🎄 Advent of Code 2021 ☃️❄️
  
 
-![](https://img.shields.io/badge/stars%20⭐-16-gold.svg)
+![](https://img.shields.io/badge/stars%20⭐-18-gold.svg)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
@@ -44,7 +44,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | [`06`](day06/src/main.cpp) | **Lanternfish**             |           95 |         126 |
 | [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          177 |         137 |
 | [`08`](day08/src/main.cpp) | **Seven Segment Search**    |         1483 |         363 |
-| [`09`](day09/src/main.cpp) | **Smoke Basin**             |        `xxx` |       `xxx` |
+| [`09`](day09/src/main.cpp) | **Smoke Basin**             |         1070 |         228 |
 
 ## Build 
 
