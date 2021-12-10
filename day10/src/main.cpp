@@ -2,7 +2,8 @@
 // Lento Manickathan
 #include <chrono>
 #include <fmt/ranges.h>
-#include <list>
+#include <map>
+#include <stack>
 #include <string>
 #include <vector>
 
@@ -10,26 +11,26 @@
 #include <utils/timer.h>
 
 // Depth-first search
-static inline int32_t dfs(std::list<char>& nodes, char* c)
+static inline int32_t dfs(std::stack<char>& nodes, char* c)
 {
     if (*c == '\0')
         return 0;
     if (*c == '(' || *c == '[' || *c == '{' || *c == '<')
     {
-        nodes.push_back(*c);
+        nodes.push(*c);
         return dfs(nodes, ++c);
     }
-    else if (*c == ')' && nodes.back() != '(')
+    else if (*c == ')' && nodes.top() != '(')
         return 3;
-    else if (*c == ']' && nodes.back() != '[')
+    else if (*c == ']' && nodes.top() != '[')
         return 57;
-    else if (*c == '}' && nodes.back() != '{')
+    else if (*c == '}' && nodes.top() != '{')
         return 1197;
-    else if (*c == '>' && nodes.back() != '<')
+    else if (*c == '>' && nodes.top() != '<')
         return 25137;
     else
     {
-        nodes.pop_back();
+        nodes.pop();
         return dfs(nodes, ++c);
     }
     throw std::runtime_error("Oh no!");
@@ -41,7 +42,7 @@ static uint64_t problem1(utils::Text<std::string>& input)
     uint64_t answer = 0;
     for (auto& line : input)
     {
-        std::list<char> nodes;
+        std::stack<char> nodes;
         answer += dfs(nodes, &line.front());
     }
 
@@ -55,37 +56,21 @@ static uint64_t problem2(utils::Text<std::string>& input)
 
     for (auto& line : input)
     {
-        std::list<char> openings;
+        std::stack<char> openings;
         if (!dfs(openings, &line.front())) // has reached end
         {
-            // All the nodes
+            std::map<char, int> score_map = {
+              {'(', 1},
+              {'[', 2},
+              {'{', 3},
+              {'<', 4}};
+
+            // Accumulate score for each closing sequence
             uint64_t score = 0;
-            std::list<char> closings;
-            // Find closing sequence
-            for (auto it = std::rbegin(openings); it != std::rend(openings); ++it)
+            while (!openings.empty())
             {
-                if (*it == '[')
-                {
-                    closings.push_back(']');
-                    score = score * 5 + 2;
-                }
-                else if (*it == '{')
-                {
-                    closings.push_back('}');
-                    score = score * 5 + 3;
-                }
-                else if (*it == '(')
-                {
-                    closings.push_back(')');
-                    score = score * 5 + 1;
-                }
-                else if (*it == '<')
-                {
-                    closings.push_back('>');
-                    score = score * 5 + 4;
-                }
-                else
-                    throw std::runtime_error("Oh no!");
+                score = score * 5 + score_map[openings.top()];
+                openings.pop();
             }
             scores.push_back(score);
         }
