@@ -84,8 +84,6 @@ errors?*
 
 Your puzzle answer was `394647`.
 
-The first half of this puzzle is complete! It provides one gold star: \*
-
 \-\-- Part Two \-\--  
 --------------------
 
@@ -150,7 +148,8 @@ and larger than it.
 Find the completion string for each incomplete line, score the
 completion strings, and sort the scores. *What is the middle score?*
 
-Answer:
+Your puzzle answer was `2380061249`.
 
-Although it hasn\'t changed, you can still [get your puzzle
-input](10/input).
+Both parts of this puzzle are complete! They provide two gold stars:
+\*\*
+

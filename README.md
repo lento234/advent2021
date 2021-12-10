@@ -45,7 +45,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          177 |         137 |
 | [`08`](day08/src/main.cpp) | **Seven Segment Search**    |         1483 |         363 |
 | [`09`](day09/src/main.cpp) | **Smoke Basin**             |          660 |         201 |
-| [`10`](day10/src/main.cpp) | **Syntax Scoring**          |        `xxx` |       `xxx` |
+| [`10`](day10/src/main.cpp) | **Syntax Scoring**          |          975 |         362 |
 
 ## Build 
 
