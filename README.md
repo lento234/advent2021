@@ -34,19 +34,19 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. Memory usage profiled using `valgrind`.
 
 
-|            Day             | Problem                     | Runtime (μs) | Memory (kB) |
-| :------------------------: | :-------------------------- | -----------: | ----------: |
-| [`01`](day01/src/main.cpp) | **Sonar Sweep**             |          229 |         138 |
-| [`02`](day02/src/main.cpp) | **Dive!**                   |          285 |         364 |
-| [`03`](day03/src/main.cpp) | **Binary Diagnostic**       |          302 |         685 |
-| [`04`](day04/src/main.cpp) | **Giant Squid**             |         1021 |         697 |
-| [`05`](day05/src/main.cpp) | **Hydrothermal Venture**    |         3185 |       11096 |
-| [`06`](day06/src/main.cpp) | **Lanternfish**             |           95 |         126 |
-| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          177 |         137 |
-| [`08`](day08/src/main.cpp) | **Seven Segment Search**    |         1483 |         363 |
-| [`09`](day09/src/main.cpp) | **Smoke Basin**             |          359 |         201 |
-| [`10`](day10/src/main.cpp) | **Syntax Scoring**          |          218 |         255 |
-| [`11`](day11/src/main.cpp) | **Dumbo Octopus**           |          590 |          93 |
+|            Day             | Problem                     | Runtime (μs) | Relative Performance               | Memory (kB) |
+| :------------------------: | :-------------------------- | -----------: | :--------------------------------- | ----------: |
+| [`01`](day01/src/main.cpp) | **Sonar Sweep**             |          229 | `--`                               |         138 |
+| [`02`](day02/src/main.cpp) | **Dive!**                   |          285 | `---`                              |         364 |
+| [`03`](day03/src/main.cpp) | **Binary Diagnostic**       |          302 | `---`                              |         685 |
+| [`04`](day04/src/main.cpp) | **Giant Squid**             |         1021 | `----------`                       |         697 |
+| [`05`](day05/src/main.cpp) | **Hydrothermal Venture**    |         3185 | `--------------------------------` |       11096 |
+| [`06`](day06/src/main.cpp) | **Lanternfish**             |           95 | `-`                                |         126 |
+| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          177 | `--`                               |         137 |
+| [`08`](day08/src/main.cpp) | **Seven Segment Search**    |         1483 | `---------------`                  |         363 |
+| [`09`](day09/src/main.cpp) | **Smoke Basin**             |          359 | `----`                             |         201 |
+| [`10`](day10/src/main.cpp) | **Syntax Scoring**          |          218 | `--`                               |         255 |
+| [`11`](day11/src/main.cpp) | **Dumbo Octopus**           |          590 | `------`                           |          93 |
 
 ## Build 
 
