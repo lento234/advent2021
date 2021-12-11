@@ -3,7 +3,7 @@
 # 🎅🎄 Advent of Code 2021 ☃️❄️
  
 
-![](https://img.shields.io/badge/stars%20⭐-20-gold.svg)
+![](https://img.shields.io/badge/stars%20⭐-22-gold.svg)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
@@ -25,7 +25,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 |          M           |          T           |          W           |          T           |           F           |              S              |          S           |
 | :------------------: | :------------------: | :------------------: | :------------------: | :-------------------: | :-------------------------: | :------------------: |
 |                      |                      | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md)  |    [4](day04/README.md)     | [5](day05/README.md) |
-| [6](day06/README.md) | [7](day07/README.md) | [8](day08/README.md) | [9](day09/README.md) | [10](day10/README.md) |             11              |          12          |
+| [6](day06/README.md) | [7](day07/README.md) | [8](day08/README.md) | [9](day09/README.md) | [10](day10/README.md) |    [11](day11/README.md)    |          12          |
 |          13          |          14          |          15          |          16          |          17           |             18              |          19          |
 |          20          |          21          |          22          |          23          |          24           | [🎁](https://bit.ly/3pnrWiY) |                      |
 
@@ -46,6 +46,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | [`08`](day08/src/main.cpp) | **Seven Segment Search**    |         1483 |         363 |
 | [`09`](day09/src/main.cpp) | **Smoke Basin**             |          359 |         201 |
 | [`10`](day10/src/main.cpp) | **Syntax Scoring**          |          218 |         255 |
+| [`11`](day11/src/main.cpp) | **Dumbo Octopus**           |          590 |          93 |
 
 ## Build 
 
