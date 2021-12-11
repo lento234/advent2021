@@ -15,13 +15,13 @@ static int64_t problem1(utils::Text<std::string>& input)
     return answer;
 }
 
-static int64_t problem2(utils::Text<std::string>& input)
-{
-    // Answer
-    int64_t answer = 0;
+// static int64_t problem2(utils::Text<std::string>& input)
+// {
+//     // Answer
+//     int64_t answer = 0;
 
-    return answer;
-}
+//     return answer;
+// }
 
 int main()
 {
@@ -42,17 +42,17 @@ int main()
                test_answer1,
                utils::pass_or_fail<uint32_t>(test_answer1, 0));
 
-    int64_t test_answer2 = problem2(test_input);
-    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-               test_answer2,
-               utils::pass_or_fail<uint32_t>(test_answer2, 0));
+    // int64_t test_answer2 = problem2(test_input);
+    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+    //            test_answer2,
+    //            utils::pass_or_fail<uint32_t>(test_answer2, 0));
 
-    // Real input
-    auto input = utils::Text<std::string>("input.txt");
+    // // Real input
+    // auto input = utils::Text<std::string>("input.txt");
 
-    // Problem 1
-    fmt::print(">> Problem 1: answer = {}\n", problem1(input));
+    // // Problem 1
+    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
-    // Problem 2
-    fmt::print(">> Problem 2: answer = {}\n", problem2(input));
+    // // Problem 2
+    // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
 }
