@@ -1,5 +1,6 @@
 // Advent of Code: Day 09
 // Lento Manickathan
+#include <algorithm>
 #include <fmt/ranges.h>
 #include <string>
 #include <vector>

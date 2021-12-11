@@ -1,6 +1,6 @@
 // Advent of Code: Day 10
 // Lento Manickathan
-#include <chrono>
+#include <algorithm>
 #include <fmt/ranges.h>
 #include <map>
 #include <stack>
