@@ -28,9 +28,9 @@ public:
         ncols = input[0].size();
         grid.resize(nrows + 2, std::vector<uint8_t>(ncols + 2, 0));
 
-        for (size_t i = 1; i < nrows + 1; ++i)
-            for (size_t j = 1; j < ncols + 1; ++j)
-                grid[i][j] = input[i - 1][j - 1] - '0';
+        for (size_t i = 0; i < nrows; ++i)
+            for (size_t j = 0; j < ncols; ++j)
+                grid[i + 1][j + 1] = input[i][j] - '0';
     }
 
     void evolve()
@@ -46,10 +46,7 @@ public:
                     flash(i, j);
     }
 
-    size_t count_flashes() const
-    {
-        return n_flashes;
-    }
+    size_t count_flashes() const { return n_flashes; }
 
     void print()
     {
