@@ -1,7 +1,6 @@
 # Day 07
 
-\-\-- Day 7: The Treachery of Whales \-\--
-------------------------------------------
+## \-\-- Day 7: The Treachery of Whales \-\--
 
 A giant [whale](https://en.wikipedia.org/wiki/Sperm_whale) has decided
 your submarine is its next meal, and it\'s much faster than you are.
@@ -56,14 +55,13 @@ position?*
 
 Your puzzle answer was `344297`.
 
-\-\-- Part Two \-\--  
---------------------
+## \-\-- Part Two \-\-- 
 
 The crabs don\'t seem interested in your proposed solution. Perhaps you
 misunderstand crab engineering?
 
 As it turns out, crab submarine engines [don\'t burn fuel at a constant
-rate] .
+rate].
 Instead, each change of 1 step in horizontal position costs 1 more unit
 of fuel than the last: the first step costs `1`, the second step costs
 `2`, the third step costs `3`, and so on.
@@ -91,7 +89,4 @@ least fuel possible so they can make you an escape route! *How much fuel
 must they spend to align to that position?*
 
 Your puzzle answer was `97164301`.
-
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
 

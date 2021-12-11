@@ -8,7 +8,7 @@ floor! These vents constantly produce large, opaque clouds, so it would
 be best to avoid them if possible.
 
 They tend to form in *lines*; the submarine helpfully produces a list of
-nearby [lines of vents]{title="Maybe they're Bresenham vents."} (your
+nearby [lines of vents] (your
 puzzle input) for you to review. For example:
 
     0,9 -> 5,9
@@ -62,7 +62,7 @@ least two lines overlap?*
 
 Your puzzle answer was `6283`.
 
-## \-\-- Part Two \-\--
+## \-\-- Part Two \-\-- 
 
 Unfortunately, considering only horizontal and vertical lines doesn\'t
 give you the full picture; you need to also consider *diagonal lines*.
@@ -97,5 +97,3 @@ overlap?*
 
 Your puzzle answer was `18864`.
 
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*

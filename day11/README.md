@@ -8,7 +8,7 @@ not like the Christmas lights on your submarine, so you turn them off
 for now.
 
 There are 100
-[octopuses] 
+[octopuses]
 arranged neatly in a 10 by 10 grid. Each octopus slowly gains *energy*
 over time and *flashes* brightly for a moment when its energy is full.
 Although your lights are off, maybe you could navigate through the cave
@@ -326,7 +326,7 @@ simulate 100 steps. *How many total flashes are there after 100 steps?*
 
 Your puzzle answer was `1644`.
 
-## \-\-- Part Two \-\--  
+## \-\-- Part Two \-\-- 
 
 It seems like the individual flashes aren\'t bright enough to navigate.
 However, you might have a better option: the flashes seem to be
@@ -376,7 +376,4 @@ simultaneously, you should be able to navigate through the cavern. *What
 is the first step during which all octopuses flash?*
 
 Your puzzle answer was `229`.
-
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
 

@@ -1,7 +1,6 @@
-# Day 1
+# Day 01
 
-\-\-- Day 1: Sonar Sweep \-\--
-------------------------------
+## \-\-- Day 1: Sonar Sweep \-\--
 
 You\'re minding your own business on a ship at sea when the overboard
 alarm goes off! You rush to see if you can help. Apparently, one of the
@@ -47,7 +46,7 @@ sonar sweep found depths of `199`, `200`, `208`, `210`, and so on.
 The first order of business is to figure out how quickly the depth
 increases, just so you know what you\'re dealing with - you never know
 if the keys will get [carried into deeper
-water]{title="Does this premise seem fishy to you?"} by an ocean current
+water] by an ocean current
 or a fish or something.
 
 To do this, count *the number of times a depth measurement increases*
@@ -72,8 +71,7 @@ previous measurement.
 
 Your puzzle answer was `1393`.
 
-\-\-- Part Two \-\--
---------------------
+## \-\-- Part Two \-\-- 
 
 Considering every single measurement isn\'t as useful as you expected:
 there\'s just too much noise in the data.
@@ -125,5 +123,3 @@ larger than the previous sum?*
 
 Your puzzle answer was `1359`.
 
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*

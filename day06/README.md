@@ -12,7 +12,7 @@ They must spawn quickly to reach such large numbers - maybe
 
 Although you know nothing about this specific species of lanternfish,
 you make some guesses about their attributes. Surely, [each lanternfish
-creates a new lanternfish]  once
+creates a new lanternfish] once
 every *7* days.
 
 However, this process isn\'t necessarily synchronized between every
@@ -84,7 +84,7 @@ after 80 days?*
 
 Your puzzle answer was `360610`.
 
-## \-\-- Part Two \-\--  
+## \-\-- Part Two \-\-- 
 
 Suppose the lanternfish live forever and have unlimited food and space.
 Would they take over the entire ocean?
@@ -95,7 +95,4 @@ After 256 days in the example above, there would be a total of
 *How many lanternfish would there be after 256 days?*
 
 Your puzzle answer was `1631629590423`.
-
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
 

@@ -1,13 +1,12 @@
 # Day 09
 
-\-\-- Day 9: Smoke Basin \-\--
-------------------------------
+## \-\-- Day 9: Smoke Basin \-\--
 
 These caves seem to be [lava
 tubes](https://en.wikipedia.org/wiki/Lava_tube). Parts are even still
 volcanically active; small hydrothermal vents release smoke into the
 caves that slowly [settles like
-rain] .
+rain].
 
 If you can model how the smoke flows through the caves, you might be
 able to avoid it and be that much safer. The submarine generates a
@@ -46,8 +45,7 @@ risk levels of all low points on your heightmap?*
 
 Your puzzle answer was `631`.
 
-\-\-- Part Two \-\--  
---------------------
+## \-\-- Part Two \-\-- 
 
 Next, you need to find the largest basins so you know what areas are
 most important to avoid.
@@ -99,7 +97,4 @@ above example, this is `9 * 14 * 9 = 1134`.
 basins?*
 
 Your puzzle answer was `821560`.
-
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
 

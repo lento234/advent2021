@@ -10,7 +10,7 @@ As your submarine slowly makes its way through the cave system, you
 notice that the four-digit [seven-segment
 displays](https://en.wikipedia.org/wiki/Seven-segment_display) in your
 submarine are malfunctioning; [they must have been
-damaged] 
+damaged]
 during the escape. You\'ll be in a lot of trouble without them, so
 you\'d better figure out what\'s wrong.
 
@@ -119,7 +119,7 @@ appear?*
 
 Your puzzle answer was `554`.
 
-## \-\-- Part Two \-\--  
+## \-\-- Part Two \-\-- 
 
 Through a little deduction, you should now be able to determine the
 remaining digits. Consider again the first example above:
@@ -181,7 +181,4 @@ the four-digit output values. *What do you get if you add up all of the
 output values?*
 
 Your puzzle answer was `990964`.
-
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
 

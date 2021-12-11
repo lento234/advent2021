@@ -29,9 +29,9 @@ More complex but valid chunks include `([])`, `{()()()}`, `<([{}])>`,
 Some lines are *incomplete*, but others are *corrupted*. Find and
 discard the corrupted lines first.
 
-A corrupted line is one where a chunk *closes with the wrong character*
-- that is, where the characters it opens and closes with do not form one
-of the four legal pairs listed above.
+A corrupted line is one where a chunk *closes with the wrong
+character* - that is, where the characters it opens and closes with do
+not form one of the four legal pairs listed above.
 
 Examples of corrupted chunks include `(]`, `{()()()>`, `(((()))}`, and
 `<([]){()}[{}])`. Such a chunk can appear anywhere within a line, and
@@ -83,7 +83,7 @@ errors?*
 
 Your puzzle answer was `394647`.
 
-## \-\-- Part Two \-\--
+## \-\-- Part Two \-\-- {#part2}
 
 Now, discard the corrupted lines. The remaining lines are *incomplete*.
 
@@ -147,7 +147,4 @@ Find the completion string for each incomplete line, score the
 completion strings, and sort the scores. *What is the middle score?*
 
 Your puzzle answer was `2380061249`.
-
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
 

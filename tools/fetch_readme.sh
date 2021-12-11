@@ -10,6 +10,6 @@ echo -e "# Day $DAY\n" > ../day$DAY/README.md
 # write to README.md
 curl -s -H "Cookie: session=$(cat .cookie)" https://adventofcode.com/2021/day/${DAY#0} \
     | pandoc -f html -t markdown \
-    | sed -e '/<div>/,/::: {role="main"}/d' -e '/At this point/,//d' -e 's/{[^{}]*}/ /g' \
+    | sed -e '/<div>/,/::: {role="main"}/d' -e '/Both parts of this puzzle are complete!/,//d' -e 's/{[^{}]*}//g' \
     >> ../day$DAY/README.md
 

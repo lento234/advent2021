@@ -1,10 +1,9 @@
 # Day 02
 
-\-\-- Day 2: Dive! \-\--
-------------------------
+## \-\-- Day 2: Dive! \-\--
 
 Now, you need to figure out how to [pilot this
-thing]{title="Tank, I need a pilot program for a B212 helicopter."}.
+thing].
 
 It seems like the submarine can take a series of commands like
 `forward 1`, `down 2`, or `up 3`:
@@ -46,8 +45,7 @@ final horizontal position by your final depth?*
 
 Your puzzle answer was `2091984`.
 
-\-\-- Part Two \-\--
---------------------
+## \-\-- Part Two \-\-- 
 
 Based on your calculations, the planned course doesn\'t seem to make any
 sense. You find the submarine manual and discover that the process is
@@ -91,5 +89,3 @@ final depth?*
 
 Your puzzle answer was `2086261056`.
 
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*

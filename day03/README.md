@@ -1,10 +1,9 @@
 # Day 03
 
-\-\-- Day 3: Binary Diagnostic \-\--
-------------------------------------
+## \-\-- Day 3: Binary Diagnostic \-\--
 
 The submarine has been making some [odd creaking
-noises]{title="Turns out oceans are heavy."}, so you ask it to produce a
+noises], so you ask it to produce a
 diagnostic report just in case.
 
 The diagnostic report (your puzzle input) consists of a list of binary
@@ -60,8 +59,7 @@ decimal, not binary.)
 
 Your puzzle answer was `2967914`.
 
-\-\-- Part Two \-\--
---------------------
+## \-\-- Part Two \-\-- 
 
 Next, you should verify the *life support rating*, which can be
 determined by multiplying the *oxygen generator rating* by the *CO2
@@ -142,5 +140,3 @@ represent your answer in decimal, not binary.)
 
 Your puzzle answer was `7041258`.
 
-Both parts of this puzzle are complete! They provide two gold stars:
-\*\*
