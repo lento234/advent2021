@@ -49,7 +49,7 @@ static uint32_t problem2(const std::string& filename)
 
 int main()
 {
-    auto timeit = utils::Timer();
+    auto timeit = utils::Timer<std::chrono::milliseconds>();
 
     constexpr uint8_t day = 05;
 

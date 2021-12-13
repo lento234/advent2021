@@ -136,7 +136,7 @@ static uint64_t problem2(utils::Text<std::string>& input)
 
 int main()
 {
-    auto timeit = utils::Timer();
+    auto timeit = utils::Timer<std::chrono::milliseconds>();
 
     constexpr uint8_t day = 8;
 
