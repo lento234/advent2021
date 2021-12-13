@@ -67,26 +67,23 @@ void travel(
   std::map<std::string, Node>& graph,
   std::vector<Node::nodelist_t>& routes,
   Node::nodelist_t path,
-  std::string current_name,
-  std::string destination_name)
+  const std::string& destination)
 {
-    // fmt::print("{}: {} -> {}, neighbours = {}\n",
-    //            current_name,
-    //            path,
-    //            graph[destination_name].name,
-    //            graph[current_name].neighbours);
+    std::string& location = path.back();
 
-    for (auto neighbour_name :  graph[current_name].neighbours)
+    for (auto next_location : graph[location].neighbours)
     {
-        if (neighbour_name == destination_name)
+        if (next_location == destination)
         {
-            path.push_back(neighbour_name);
-            routes.push_back(path);
+            std::vector<std::string> final_path = path;
+            final_path.push_back(next_location);
+            routes.push_back(final_path);
         }
-        else if (!utils::is_inside<std::string>(path, neighbour_name) || graph[neighbour_name].is_big_cave)
+        else if (!utils::is_inside<std::string>(path, next_location) || graph[next_location].is_big_cave)
         {
-            path.push_back(neighbour_name);
-            travel(graph, routes, path, neighbour_name, destination_name);
+            std::vector<std::string> new_path = path;
+            new_path.push_back(next_location);
+            travel(graph, routes, new_path, destination);
         }
     }
 }
@@ -122,15 +119,13 @@ static int64_t problem1(utils::Text<std::string>& input)
     std::vector<Node::nodelist_t> routes;
     std::vector<Node::value_t> path = {"start"};
 
-    travel(graph, routes, path, "start", "end");
+    travel(graph, routes, path, "end");
 
     fmt::print("\nRoutes:\n");
     fmt::print("{}\n", fmt::join(routes, "\n"));
 
-    // fmt::print("A: {}, neighbours = {}\n", graph["A"].name, graph["A"].get_neighbour_names());
-
     // Answer
-    int64_t answer = 0;
+    int64_t answer = routes.size();
 
     return answer;
 }
@@ -159,18 +154,18 @@ int main()
     int64_t test_answer1 = problem1(test_input);
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               utils::pass_or_fail<uint32_t>(test_answer1, 0));
+               utils::pass_or_fail<uint32_t>(test_answer1, 10));
 
     // int64_t test_answer2 = problem2(test_input);
     // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
     //            test_answer2,
     //            utils::pass_or_fail<uint32_t>(test_answer2, 0));
 
-    // // Real input
-    // auto input = utils::Text<std::string>("input.txt");
+    // Real input
+    auto input = utils::Text<std::string>("input.txt");
 
-    // // Problem 1
-    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
+    // Problem 1
+    fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
     // // Problem 2
     // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
