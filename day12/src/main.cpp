@@ -9,11 +9,6 @@
 #include <utils/parser.h>
 #include <utils/timer.h>
 
-bool is_inside(const std::vector<std::string>& path, const std::string& name)
-{
-    return std::find(path.begin(), path.end(), name) != path.end();
-}
-
 struct Node
 {
     using value_t = std::string;
@@ -22,7 +17,7 @@ struct Node
     value_t name;
     bool is_big_cave = false;
 
-    std::map<value_t, std::unique_ptr<Node>> neighbours;
+    nodelist_t neighbours;
 
     Node() = default;
 
@@ -32,18 +27,10 @@ struct Node
             is_big_cave = true;
     }
 
-    void add_neighbour(std::unique_ptr<Node> node)
+    void add_neighbour(value_t neighbour_name)
     {
-        if (name != "end" && (neighbours.find(*node.name) == neighbours.end() && *node.name != "start"))
-            neighbours[*node.name] = node;
-    }
-
-    nodelist_t get_neighbour_names()
-    {
-        nodelist_t neighbour_names;
-        for (auto& [name, node] : neighbours)
-            neighbour_names.push_back(name);
-        return neighbour_names;
+        if (name != "end" && (!utils::is_inside<value_t>(neighbours, neighbour_name) && neighbour_name != "start"))
+            neighbours.push_back(neighbour_name);
     }
 
     // void find_all_paths_to(std::vector<nodelist_t>& routes, const value_t& destination)
@@ -55,45 +42,51 @@ struct Node
     //         travel(routes, path, destination);
     // }
 
-    /*
-    void travel(std::vector<nodelist_t>& routes, nodelist_t path, const value_t& destination)
-    {
-        fmt::print("{}: {} -> {}, neighbours = {}\n", name, path, destination, get_neighbour_names());
-        
-        for (auto [neighbour_name, neighbour_node] : neighbours)
-        {
-            // if (neighbour_name == destination)
-            // {
-            //     // fmt::print("{}: {} -> {}, {}\n", name, path, destination);
-            //     path.push_back(neighbour_name);
-            //     routes.push_back(path);
-            // }
-            // if (!is_inside(path, neighbour_name) || neighbour_node.is_big_cave)
-            // {
-                path.push_back(neighbour_name);
-                neighbour_node.travel(routes, path, destination);
-            // }
+    // void travel(std::vector<nodelist_t>& routes, nodelist_t path, const value_t& destination)
+    // {
+    //     fmt::print("{}: {} -> {}, neighbours = {}\n", this->name, path, destination, this->get_neighbour_names());
 
-        }
-    }
-    */
+    //     for (auto [neighbour_name, neighbour_node] : neighbours)
+    //     {
+    //         if (neighbour_name == destination)
+    //         {
+    //             // fmt::print("{}: {} -> {}, {}\n", name, path, destination);
+    //             path.push_back(neighbour_name);
+    //             routes.push_back(path);
+    //         }
+    //         else if (!utils::is_inside(path, neighbour_name) || neighbour_node->is_big_cave)
+    //         {
+    //             path.push_back(neighbour_name);
+    //             neighbour_node->travel(routes, path, destination);
+    //         }
+    //     }
+    // }
 };
 
-void travel(std::vector<Node::nodelist_t>& routes, Node::nodelist_t path, Node current_node, Node destination_node)
+void travel(
+  std::map<std::string, Node>& graph,
+  std::vector<Node::nodelist_t>& routes,
+  Node::nodelist_t path,
+  std::string current_name,
+  std::string destination_name)
 {
-    fmt::print("{}: {} -> {}, neighbours = {}\n", current_node.name, path, destination_node.name, current_node.get_neighbour_names());
+    // fmt::print("{}: {} -> {}, neighbours = {}\n",
+    //            current_name,
+    //            path,
+    //            graph[destination_name].name,
+    //            graph[current_name].neighbours);
 
-    for (auto [name, node] : current_node.neighbours)
+    for (auto neighbour_name :  graph[current_name].neighbours)
     {
-        if (name == destination_node.name)
+        if (neighbour_name == destination_name)
         {
-            path.push_back(name);
+            path.push_back(neighbour_name);
             routes.push_back(path);
         }
-        else if (!is_inside(path, name) || node.is_big_cave)
+        else if (!utils::is_inside<std::string>(path, neighbour_name) || graph[neighbour_name].is_big_cave)
         {
-            path.push_back(name);
-            travel(routes, path, node, destination_node);
+            path.push_back(neighbour_name);
+            travel(graph, routes, path, neighbour_name, destination_name);
         }
     }
 }
@@ -107,30 +100,34 @@ static int64_t problem1(utils::Text<std::string>& input)
     for (auto& line : input)
     {
         // Split two nodes from the line string
-        std::vector<std::string> inodes = utils::split_string(line, '-');
+        std::vector<std::string> node_pairs = utils::split_string(line, '-');
+
         // Make nodes
-        for (auto& inode : inodes)
-            if (graph.find(inode) == graph.end())
-                graph[inode] = Node(inode);
+        for (auto& node : node_pairs)
+            if (graph.find(node) == graph.end())
+                graph[node] = Node(node);
+
         // Add neighbours to each other
-        graph[inodes[0]].add_neighbour(graph[inodes[1]]); // node1 -> node2
-        graph[inodes[1]].add_neighbour(graph[inodes[0]]); // node2 -> node1
+        graph[node_pairs[0]].add_neighbour(node_pairs[1]); // node1 -> node2
+        graph[node_pairs[1]].add_neighbour(node_pairs[0]); // node2 -> node1
     }
+
     // Debug
     fmt::print("Graph: size = {}\n\n", graph.size());
     for (auto& [name, node] : graph)
-        fmt::print("{} : {}, big cave = {}\n", node.name, node.get_neighbour_names(), node.is_big_cave);
+        fmt::print("{} : {}, big cave = {}\n", node.name, node.neighbours, node.is_big_cave);
     fmt::print("\n");
 
     // Find all paths from start to end
-    // std::vector<Node::nodelist_t> routes;
-    // travel(routes, {graph["start"].name}, graph["start"], graph["end"]);
+    std::vector<Node::nodelist_t> routes;
+    std::vector<Node::value_t> path = {"start"};
 
-    // fmt::print("\n\nRoutes:\n");
-    // fmt::print("{}\n", fmt::join(routes, "\n"));
+    travel(graph, routes, path, "start", "end");
 
-    fmt::print("A: {}, neighbours = {}\n", graph["A"].name, graph["A"].get_neighbour_names());
-    fmt::print("A: {}, neighbours = {}\n", graph["A"].name, graph["A"].get_neighbour_names())
+    fmt::print("\nRoutes:\n");
+    fmt::print("{}\n", fmt::join(routes, "\n"));
+
+    // fmt::print("A: {}, neighbours = {}\n", graph["A"].name, graph["A"].get_neighbour_names());
 
     // Answer
     int64_t answer = 0;

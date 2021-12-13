@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -7,12 +8,18 @@
 
 namespace utils
 {
-static inline bool contains(const std::string& str, const std::string& match)
+inline bool contains(const std::string& str, const std::string& match)
 {
     return str.find(match) != std::string::npos;
 }
 
-static inline std::vector<std::string> split_string(const std::string& str, const char& delim)
+template <typename T>
+inline bool is_inside(const std::vector<T>& list, const T& item)
+{
+    return std::find(list.begin(), list.end(), item) != list.end();
+}
+
+inline std::vector<std::string> split_string(const std::string& str, const char& delim)
 {
     std::vector<std::string> result;
     std::stringstream ss(str);
@@ -23,7 +30,7 @@ static inline std::vector<std::string> split_string(const std::string& str, cons
 }
 
 template <typename T>
-static inline std::vector<T> split_numbers(const std::string& str, const char& delim)
+inline std::vector<T> split_numbers(const std::string& str, const char& delim)
 {
     std::vector<T> result;
     std::stringstream ss(str);
