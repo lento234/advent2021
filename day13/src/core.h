@@ -1,5 +1,6 @@
 #pragma once
 
+#include <fmt/ranges.h>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -8,11 +9,12 @@
 
 struct Origami
 {
+    using string_t = std::string;
     size_t x_max = 0, y_max = 0;
     size_t size = 0, n_dots = 0;
 
     std::tuple<std::vector<uint16_t>, std::vector<uint16_t>> coordinates;
-    std::vector<std::string> grid;
+    std::vector<string_t> grid;
 
     Origami() = default;
 
@@ -58,7 +60,7 @@ struct Origami
     void make_grid()
     {
         auto& [x_coordinates, y_coordinates] = coordinates;
-        grid = std::vector<std::string>(y_max + 1, std::string(x_max + 1, '.'));
+        grid = std::vector<string_t>(y_max + 1, string_t(x_max + 1, ' '));
         for (size_t i = 0; i < size; ++i)
             grid[y_coordinates[i]][x_coordinates[i]] = '#';
 
@@ -79,8 +81,8 @@ struct Origami
         else
         {
             make_grid();
+            // Plot using fmt
             fmt::print("\n    {}\n\n", fmt::join(grid, "\n    "));
-            //fmt::print("Origami: size = {}, x_max = {}, y_max = {}, number of # = {}\n\n", size, x_max, y_max, n_dots);
         }
     }
 };
