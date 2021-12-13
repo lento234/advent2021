@@ -1,7 +1,9 @@
 #pragma once
 
 #include <algorithm>
+#include <deque>
 #include <fstream>
+#include <list>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -15,6 +17,18 @@ inline bool contains(const std::string& str, const std::string& match)
 
 template <typename T>
 inline bool is_inside(const std::vector<T>& list, const T& item)
+{
+    return std::find(list.begin(), list.end(), item) != list.end();
+}
+
+template <typename T>
+inline bool is_inside(const std::list<T>& list, const T& item)
+{
+    return std::find(list.begin(), list.end(), item) != list.end();
+}
+
+template <typename T>
+inline bool is_inside(const std::deque<T>& list, const T& item)
 {
     return std::find(list.begin(), list.end(), item) != list.end();
 }
