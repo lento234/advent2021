@@ -114,18 +114,38 @@ static uint64_t problem1(utils::Text<std::string>& input)
     graph["start"]->find_all_paths_to("end");
 
     // Answer
-    int64_t answer = graph["start"]->routes.size();
+    uint64_t answer = graph["start"]->routes.size();
 
     return answer;
 }
 
-// static int64_t problem2(utils::Text<std::string>& input)
-// {
-//     // Answer
-//     int64_t answer = 0;
+static int64_t problem2(utils::Text<std::string>& input)
+{
+    // Store all nodes and paths as a graph
+    std::map<std::string, std::shared_ptr<Node>> graph;
+    for (auto& line : input)
+    {
+        // Split two nodes from the line string
+        std::vector<std::string> node_pairs = utils::split_string(line, '-');
 
-//     return answer;
-// }
+        // Make nodes
+        for (auto& node : node_pairs)
+            if (graph.find(node) == graph.end())
+                graph[node] = std::make_shared<Node>(Node(node));
+
+        // Add neighbours to each other
+        graph[node_pairs[0]]->add_neighbour(graph[node_pairs[1]]); // node1 -> node2
+        graph[node_pairs[1]]->add_neighbour(graph[node_pairs[0]]); // node2 -> node1
+    }
+
+    // Find all paths from start to end
+    graph["start"]->find_all_paths_to("end");
+
+    // Answer
+    uint64_t answer = graph["start"]->routes.size();
+
+    return answer;
+}
 
 int main()
 {
@@ -145,10 +165,10 @@ int main()
                test_answer1,
                utils::pass_or_fail<uint64_t>(test_answer1, 10));
 
-    // uint64_t test_answer2 = problem2(test_input);
-    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-    //            test_answer2,
-    //            utils::pass_or_fail<uint64_t>(test_answer2, 36));
+    uint64_t test_answer2 = problem2(test_input);
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+               test_answer2,
+               utils::pass_or_fail<uint64_t>(test_answer2, 36));
 
     // Real input
     auto input = utils::Text<std::string>("input.txt");
