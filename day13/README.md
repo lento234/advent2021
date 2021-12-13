@@ -142,11 +142,17 @@ completed count as a single dot.
 *How many dots are visible after completing just the first fold
 instruction on your transparent paper?*
 
-To begin, [get your puzzle input](13/input).
+Your puzzle answer was `763`.
 
-Answer:
+## \-\-- Part Two \-\-- 
 
-You can also [\[Share[on
-[Twitter](https://twitter.com/intent/tweet?text=%22Transparent+Origami%22+%2D+Day+13+%2D+Advent+of+Code+2021&url=https%3A%2F%2Fadventofcode%2Ecom%2F2021%2Fday%2F13&related=ericwastl&hashtags=AdventOfCode)
-[Mastodon](javascript:void(0);)]\]] this puzzle.
-:::
+[Finish
+folding]
+the transparent paper according to the instructions. The manual says the
+code is always *eight capital letters*.
+
+*What code do you use to activate the infrared thermal imaging camera
+system?*
+
+Your puzzle answer was `RHALRCRA`.
+
