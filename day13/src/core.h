@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <tuple>
 #include <vector>
 
 #include <utils/parser.h>
@@ -10,14 +11,14 @@ struct Origami
     size_t x_max = 0, y_max = 0;
     size_t size = 0, n_dots = 0;
 
-    std::vector<uint16_t> x_coordinates;
-    std::vector<uint16_t> y_coordinates;
+    std::tuple<std::vector<uint16_t>, std::vector<uint16_t>> coordinates;
     std::vector<std::string> grid;
 
     Origami() = default;
 
     Origami(utils::Text<std::string>& input)
     {
+        auto& [x_coordinates, y_coordinates] = coordinates;
         for (auto& line : input)
         {
             if (line[0] != 'f' && line[0] != 'a' && line[0] != 'y' && line[0] != 'x')
@@ -34,6 +35,7 @@ struct Origami
 
     void fold_up(uint16_t y)
     {
+        auto& [x_coordinates, y_coordinates] = coordinates;
         for (size_t i = 0; i < size; i++)
         {
             if (y_coordinates[i] > y)
@@ -44,6 +46,7 @@ struct Origami
 
     void fold_left(uint16_t x)
     {
+        auto& [x_coordinates, y_coordinates] = coordinates;
         for (size_t i = 0; i < size; i++)
         {
             if (x_coordinates[i] > x)
@@ -54,6 +57,7 @@ struct Origami
 
     void make_grid()
     {
+        auto& [x_coordinates, y_coordinates] = coordinates;
         grid = std::vector<std::string>(y_max + 1, std::string(x_max + 1, '.'));
         for (size_t i = 0; i < size; ++i)
             grid[y_coordinates[i]][x_coordinates[i]] = '#';
@@ -65,6 +69,7 @@ struct Origami
 
     void print(const std::string& style = "grid")
     {
+        auto& [x_coordinates, y_coordinates] = coordinates;
         if (style == "raw")
         {
             for (size_t i = 0; i < size; ++i)
