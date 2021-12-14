@@ -34,22 +34,22 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and with flags `-O3 -march=native`. Memory usage profiled using `valgrind`.
 
 
-|            Day             | Problem                     | Runtime |   Memory | Performance graph (`█ == 250 μs`)           |
-| :------------------------: | :-------------------------- | ------: | -------: | :------------------------------------------ |
-| [`01`](day01/src/main.cpp) | **Sonar Sweep**             |  229 μs |   138 kB | `█`                                         |
-| [`02`](day02/src/main.cpp) | **Dive!**                   |  285 μs |   364 kB | `█`                                         |
-| [`03`](day03/src/main.cpp) | **Binary Diagnostic**       |  302 μs |   685 kB | `█`                                         |
-| [`04`](day04/src/main.cpp) | **Giant Squid**             | 1021 μs |   697 kB | `████`                                      |
-| [`05`](day05/src/main.cpp) | **Hydrothermal Venture**    | 3.19 ms | 10.85 MB | `█████████████`                             |
-| [`06`](day06/src/main.cpp) | **Lanternfish**             |   95 μs |   126 kB | `█`                                         |
-| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |  177 μs |   137 kB | `█`                                         |
-| [`08`](day08/src/main.cpp) | **Seven Segment Search**    | 1483 μs |   363 kB | `██████`                                    |
-| [`09`](day09/src/main.cpp) | **Smoke Basin**             |  359 μs |   201 kB | `██`                                        |
-| [`10`](day10/src/main.cpp) | **Syntax Scoring**          |  218 μs |   255 kB | `█`                                         |
-| [`11`](day11/src/main.cpp) | **Dumbo Octopus**           |  590 μs |    93 kB | `██`                                        |
-| [`12`](day12/src/main.cpp) | **Passage Pathing**         |  126 ms |   126 MB | `█████████████████████████████████████████` |
-| [`13`](day13/src/main.cpp) | **Transparent Origami**     |  1.3 ms |   784 kB | `█████`                                     |
-| [`14`](day14/src/main.cpp) | **Extended Polymerization**  |  1.6 ms |   494 kB | `██████`                                    |
+|            Day             | Problem                     | Runtime (μs) |   Memory | Performance graph (`█ == 250 μs`) |
+| :------------------------: | :-------------------------- | -----------: | -------: | :-------------------------------- |
+| [`01`](day01/src/main.cpp) | **Sonar Sweep**             |          229 |   138 kB | `█`                               |
+| [`02`](day02/src/main.cpp) | **Dive!**                   |          285 |   364 kB | `█`                               |
+| [`03`](day03/src/main.cpp) | **Binary Diagnostic**       |          302 |   685 kB | `█`                               |
+| [`04`](day04/src/main.cpp) | **Giant Squid**             |         1021 |   697 kB | `████`                            |
+| [`05`](day05/src/main.cpp) | **Hydrothermal Venture**    |         3442 | 10.85 MB | `██████████████`                  |
+| [`06`](day06/src/main.cpp) | **Lanternfish**             |           95 |   126 kB | `█`                               |
+| [`07`](day07/src/main.cpp) | **The Treachery of Whales** |          177 |   137 kB | `█`                               |
+| [`08`](day08/src/main.cpp) | **Seven Segment Search**    |         1483 |   363 kB | `██████`                          |
+| [`09`](day09/src/main.cpp) | **Smoke Basin**             |          359 |   201 kB | `██`                              |
+| [`10`](day10/src/main.cpp) | **Syntax Scoring**          |          218 |   255 kB | `█`                               |
+| [`11`](day11/src/main.cpp) | **Dumbo Octopus**           |          590 |    93 kB | `██`                              |
+| [`12`](day12/src/main.cpp) | **Passage Pathing**         |        53743 |   126 MB | `off the charts :(`               |
+| [`13`](day13/src/main.cpp) | **Transparent Origami**     |         1222 |   784 kB | `█████`                           |
+| [`14`](day14/src/main.cpp) | **Extended Polymerization** |         1573 |   494 kB | `██████`                          |
 
 
 ## Build 

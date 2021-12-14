@@ -1,6 +1,5 @@
 // Advent of Code: Day 05
 // Lento Manickathan
-#include <chrono>
 #include <fmt/ranges.h>
 #include <sstream>
 #include <string>
@@ -49,7 +48,7 @@ static uint32_t problem2(const std::string& filename)
 
 int main()
 {
-    auto timeit = utils::Timer<std::chrono::milliseconds>();
+    auto timeit = utils::Timer();
 
     constexpr uint8_t day = 05;
 
