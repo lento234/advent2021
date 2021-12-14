@@ -35,7 +35,7 @@ static uint64_t problem1(utils::Text<std::string>& input)
     graph["start"]->find_all_paths_to("end", 1);
 
     // Answer
-    uint64_t answer = graph["start"]->routes.size();
+    uint64_t answer = graph["start"]->n_routes;
 
     return answer;
 }
@@ -63,7 +63,7 @@ static uint64_t problem2(utils::Text<std::string>& input)
     graph["start"]->find_all_paths_to("end", 2);
 
     // Answer
-    uint64_t answer = graph["start"]->routes.size();
+    uint64_t answer = graph["start"]->n_routes;
 
     return answer;
 }

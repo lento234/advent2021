@@ -47,7 +47,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | [`09`](day09/src/main.cpp) | **Smoke Basin**             |  359 μs |   201 kB | `██`                                        |
 | [`10`](day10/src/main.cpp) | **Syntax Scoring**          |  218 μs |   255 kB | `█`                                         |
 | [`11`](day11/src/main.cpp) | **Dumbo Octopus**           |  590 μs |    93 kB | `██`                                        |
-| [`12`](day12/src/main.cpp) | **Passage Pathing**         |  126 ms |   510 MB | `█████████████████████████████████████████` |
+| [`12`](day12/src/main.cpp) | **Passage Pathing**         |  126 ms |   126 MB | `█████████████████████████████████████████` |
 | [`13`](day13/src/main.cpp) | **Transparent Origami**     |  1.3 ms |   784 kB | `█████`                                     |
 | [`14`](day14/src/main.cpp) | **Extended Polymerization**  |  1.6 ms |   494 kB | `██████`                                    |
 
