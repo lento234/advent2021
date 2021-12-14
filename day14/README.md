@@ -83,11 +83,23 @@ most and least common elements in the result. *What do you get if you
 take the quantity of the most common element and subtract the quantity
 of the least common element?*
 
-To begin, [get your puzzle input](14/input).
+Your puzzle answer was `2703`.
 
-Answer:
+\-\-- Part Two \-\-- 
+--------------------
 
-You can also [\[Share[on
-[Twitter](https://twitter.com/intent/tweet?text=%22Extended+Polymerization%22+%2D+Day+14+%2D+Advent+of+Code+2021&url=https%3A%2F%2Fadventofcode%2Ecom%2F2021%2Fday%2F14&related=ericwastl&hashtags=AdventOfCode)
-[Mastodon](javascript:void(0);)]\]] this puzzle.
-:::
+The resulting polymer isn\'t nearly strong enough to reinforce the
+submarine. You\'ll need to run more steps of the pair insertion process;
+a total of *40 steps* should do it.
+
+In the above example, the most common element is `B` (occurring
+`2192039569602` times) and the least common element is `H` (occurring
+`3849876073` times); subtracting these produces `2188189693529`.
+
+Apply *40* steps of pair insertion to the polymer template and find the
+most and least common elements in the result. *What do you get if you
+take the quantity of the most common element and subtract the quantity
+of the least common element?*
+
+Your puzzle answer was `2984946368465`.
+

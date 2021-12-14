@@ -13,11 +13,13 @@ std::map<std::string, std::string> parse_rule(utils::Text<std::string>& input)
 {
     std::map<std::string, std::string> rules;
 
-    for (size_t i = 1; i < input.size() - 2; i = i + 3)
+    for (size_t i = 1; i < input.size(); i = i + 3)
         rules[input[i]] = input[i + 2][0];
 
     return rules;
 }
+
+#ifndef NDEBUG
 
 static uint64_t problem_brute_force(utils::Text<std::string>& input)
 {
@@ -58,24 +60,23 @@ static uint64_t problem_brute_force(utils::Text<std::string>& input)
 
     return answer;
 }
+#endif
 
 static uint64_t problem(utils::Text<std::string>& input, const size_t& n_steps)
 {
     // Parse polymer
     std::string polymer = input[0];
 
-    input.print();
     // Parse rules
     std::map<std::string, std::string> rules = parse_rule(input);
 
-    // Initialize bags from template polymer
+    // Initialize bags from template polymer (bug, wrong way)
     std::map<std::string, size_t> bags;
     for (auto& [key, value] : rules)
     {
-        if (utils::contains(polymer, key))
-            bags[key] = 1;
-        else
-            bags[key] = 0;
+        for (size_t i=0; i<polymer.size()-1; i++)
+            if (polymer.substr(i, 2) == key)
+                bags[key]++;
     }
 
     // Polymerize n_step times
@@ -108,7 +109,6 @@ static uint64_t problem(utils::Text<std::string>& input, const size_t& n_steps)
         max = std::max(max, value);
     }
 
-    fmt::print("{}\n {}, {}\n", counts, min, max);
     // Answer
     uint64_t answer = max-min;
 
@@ -134,10 +134,10 @@ int main()
                test_answer1,
                utils::pass_or_fail<uint64_t>(test_answer1, 1588));
 
-    // uint64_t test_answer2 = problem(test_input, 40);
-    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-    //            test_answer2,
-    //            utils::pass_or_fail<uint64_t>(test_answer2, 2188189693529));
+    uint64_t test_answer2 = problem(test_input, 40);
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+               test_answer2,
+               utils::pass_or_fail<uint64_t>(test_answer2, 2188189693529));
 
     // Real input
     auto input = utils::Text<std::string>("input.txt");
@@ -146,5 +146,5 @@ int main()
     fmt::print(">> Problem 1: answer = {}\n", problem(input, 10));
 
     // Problem 2
-    // fmt::print(">> Problem 2: answer = {}\n", problem(input, 40));
+    fmt::print(">> Problem 2: answer = {}\n", problem(input, 40));
 }
