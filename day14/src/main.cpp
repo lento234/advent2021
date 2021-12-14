@@ -1,5 +1,6 @@
 // Advent of Code: Day 14
 // Lento Manickathan
+#include <algorithm>
 #include <fmt/ranges.h>
 #include <map>
 #include <string>
@@ -18,43 +19,101 @@ std::map<std::string, std::string> parse_rule(utils::Text<std::string>& input)
     return rules;
 }
 
-static int64_t problem1(utils::Text<std::string>& input)
+static uint64_t problem_brute_force(utils::Text<std::string>& input)
 {
-
     // Parse polymer
     std::string polymer = input[0];
     // Parse rules
     std::map<std::string, std::string> rules = parse_rule(input);
 
     // Number of steps
-    size_t n_steps = 4;
+    size_t n_steps = 10;
 
-    fmt::print("Template      : {}\n", polymer);
+    //fmt::print("Template      : {}\n", polymer);
 
-    for (size_t k = 1; k < n_steps+1; ++k)
+    for (size_t k = 1; k < n_steps + 1; ++k)
     {
         std::string temp = polymer;
 
         for (size_t i = 0; i < polymer.size() - 1; i++)
             temp.insert(2 * i + 1, rules[polymer.substr(i, 2)]);
         polymer = temp;
-
-        fmt::print("After step {:2d} : {}\n", k, polymer);
+        //fmt::print("After step {:2d} : {}\n", k, polymer);
     }
 
+    // Get unique letters
+    std::string polymer_unique = polymer;
+    std::sort(polymer_unique.begin(), polymer_unique.end());
+    auto last = std::unique(polymer_unique.begin(), polymer_unique.end());
+    polymer_unique.erase(last, polymer_unique.end());
+
+    // Count letters
+    std::vector<size_t> counts;
+    for (auto& c : polymer_unique)
+        counts.push_back(std::count(polymer.begin(), polymer.end(), c));
+    std::sort(counts.begin(), counts.end());
+
     // Answer
-    int64_t answer = 0;
+    uint64_t answer = counts.back() - counts.front();
 
     return answer;
 }
 
-// static int64_t problem2(utils::Text<std::string>& input)
-// {
-//     // Answer
-//     int64_t answer = 0;
+static uint64_t problem(utils::Text<std::string>& input, const size_t& n_steps)
+{
+    // Parse polymer
+    std::string polymer = input[0];
 
-//     return answer;
-// }
+    input.print();
+    // Parse rules
+    std::map<std::string, std::string> rules = parse_rule(input);
+
+    // Initialize bags from template polymer
+    std::map<std::string, size_t> bags;
+    for (auto& [key, value] : rules)
+    {
+        if (utils::contains(polymer, key))
+            bags[key] = 1;
+        else
+            bags[key] = 0;
+    }
+
+    // Polymerize n_step times
+    for (size_t k = 1; k < n_steps + 1; ++k)
+    {
+        std::map<std::string, size_t> temp;
+        // Polymerize
+        for (auto& [key, value] : bags)
+        {
+            std::string keyL = key[0] + rules[key];
+            std::string keyR = rules[key] + key[1];
+            temp[keyL] += bags[key];
+            temp[keyR] += bags[key];
+        }
+        bags = temp;
+    }
+
+    // Count letters
+    std::map<char, size_t> counts;
+    for (auto& [key, value] : bags)
+        counts[key[0]] += value;
+    counts[polymer.back()]++; // let's not forget the last one
+
+    // Find min and max counts
+    size_t min = std::numeric_limits<size_t>::max();
+    size_t max = std::numeric_limits<size_t>::min();
+    for (auto& [key, value] : counts)
+    {
+        min = std::min(min, value);
+        max = std::max(max, value);
+    }
+
+    fmt::print("{}\n {}, {}\n", counts, min, max);
+    // Answer
+    uint64_t answer = max-min;
+
+    return answer;
+}
 
 int main()
 {
@@ -69,22 +128,23 @@ int main()
     // Test input
     auto test_input = utils::Text<std::string>("test_input.txt");
 
-    int64_t test_answer1 = problem1(test_input);
+    //uint64_t test_answer1 = problem_brute_force(test_input);
+    uint64_t test_answer1 = problem(test_input, 10);
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               utils::pass_or_fail<uint32_t>(test_answer1, 1588));
+               utils::pass_or_fail<uint64_t>(test_answer1, 1588));
 
-    // int64_t test_answer2 = problem2(test_input);
+    // uint64_t test_answer2 = problem(test_input, 40);
     // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
     //            test_answer2,
-    //            utils::pass_or_fail<uint32_t>(test_answer2, 0));
+    //            utils::pass_or_fail<uint64_t>(test_answer2, 2188189693529));
 
-    // // Real input
-    // auto input = utils::Text<std::string>("input.txt");
+    // Real input
+    auto input = utils::Text<std::string>("input.txt");
 
-    // // Problem 1
-    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
+    // Problem 1
+    fmt::print(">> Problem 1: answer = {}\n", problem(input, 10));
 
-    // // Problem 2
-    // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
+    // Problem 2
+    // fmt::print(">> Problem 2: answer = {}\n", problem(input, 40));
 }
