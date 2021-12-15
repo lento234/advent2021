@@ -7,35 +7,49 @@
 #include <utils/parser.h>
 #include <utils/timer.h>
 
-static std::vector<uint8_t> parse_grid(utils::Text<std::string>& input)
+static std::vector<std::vector<uint8_t>> parse_grid(utils::Text<std::string>& input)
 {
     size_t n_rows = input.size();
     size_t n_cols = input[0].size();
-    std::vector<uint8_t> grid(n_rows * n_cols, 0);
+
+    // Initialize grid
+    std::vector<std::vector<uint8_t>> grid(n_rows, std::vector<uint8_t>(n_cols));
     for (size_t i = 0; i < n_rows; ++i)
         for (size_t j = 0; j < n_cols; ++j)
-            grid[i * n_cols + j] = input[i][j] - '0';
+            grid[i][j] = input[i][j] - '0';
 
     return grid;
 }
 
 static uint64_t problem1(utils::Text<std::string>& input)
 {
-    // input.print();
-    std::vector<uint8_t> grid = parse_grid(input);
+    // Initilize grid
     size_t n_rows = input.size();
     size_t n_cols = input[0].size();
+    std::vector<std::vector<uint8_t>> grid = parse_grid(input);
 
-    fmt::print("{}\n", grid);
+    input.print();
 
-    uint64_t sum = 0;
-    for (size_t k = 0; k < grid.size(); ++k)
-    {
-        if (grid[k])
-    }
+    // Show
+    fmt::print("{}\n", fmt::join(grid, "\n"));
 
-    fmt::print("\n");
+    // Visited
+    //std::vector<std::vector<bool>> visited(n_rows, std::vector<bool>(n_cols, false));
 
+    // Cost
+    std::vector<std::vector<uint64_t>> cost(n_rows, std::vector<uint64_t>(n_cols, std::numeric_limits<uint64_t>::max()));
+
+    // Show
+    fmt::print("{}\n", fmt::join(cost, "\n"));
+
+    // uint64_t sum = 0;
+    // for (size_t i = 0; i < n_cols;)
+    // {
+    //     for (size_t j = 0; i < n_cols;)
+    //     {
+    //         for 
+    //     }
+    // }
     // Answer
     uint64_t answer = 0;
 
