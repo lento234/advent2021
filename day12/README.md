@@ -1,6 +1,7 @@
 # Day 12
 
-## \-\-- Day 12: Passage Pathing \-\--
+\-\-- Day 12: Passage Pathing \-\--
+-----------------------------------
 
 With your [submarine\'s subterranean subsystems subsisting
 suboptimally], the only way you\'re getting out of
@@ -123,11 +124,63 @@ Finally, this even larger example has `226` paths through it:
 *How many paths through this cave system are there that visit small
 caves at most once?*
 
-To begin, [get your puzzle input](12/input).
+Your puzzle answer was `3369`.
 
-Answer:
+\-\-- Part Two \-\-- 
+--------------------
 
-You can also [\[Share[on
-[Twitter](https://twitter.com/intent/tweet?text=%22Passage+Pathing%22+%2D+Day+12+%2D+Advent+of+Code+2021&url=https%3A%2F%2Fadventofcode%2Ecom%2F2021%2Fday%2F12&related=ericwastl&hashtags=AdventOfCode)
-[Mastodon](javascript:void(0);)]\]] this puzzle.
-:::
+After reviewing the available paths, you realize you might have time to
+visit a single small cave *twice*. Specifically, big caves can be
+visited any number of times, a single small cave can be visited at most
+twice, and the remaining small caves can be visited at most once.
+However, the caves named `start` and `end` can only be visited *exactly
+once each*: once you leave the `start` cave, you may not return to it,
+and once you reach the `end` cave, the path must end immediately.
+
+Now, the `36` possible paths through the first example above are:
+
+    start,A,b,A,b,A,c,A,end
+    start,A,b,A,b,A,end
+    start,A,b,A,b,end
+    start,A,b,A,c,A,b,A,end
+    start,A,b,A,c,A,b,end
+    start,A,b,A,c,A,c,A,end
+    start,A,b,A,c,A,end
+    start,A,b,A,end
+    start,A,b,d,b,A,c,A,end
+    start,A,b,d,b,A,end
+    start,A,b,d,b,end
+    start,A,b,end
+    start,A,c,A,b,A,b,A,end
+    start,A,c,A,b,A,b,end
+    start,A,c,A,b,A,c,A,end
+    start,A,c,A,b,A,end
+    start,A,c,A,b,d,b,A,end
+    start,A,c,A,b,d,b,end
+    start,A,c,A,b,end
+    start,A,c,A,c,A,b,A,end
+    start,A,c,A,c,A,b,end
+    start,A,c,A,c,A,end
+    start,A,c,A,end
+    start,A,end
+    start,b,A,b,A,c,A,end
+    start,b,A,b,A,end
+    start,b,A,b,end
+    start,b,A,c,A,b,A,end
+    start,b,A,c,A,b,end
+    start,b,A,c,A,c,A,end
+    start,b,A,c,A,end
+    start,b,A,end
+    start,b,d,b,A,c,A,end
+    start,b,d,b,A,end
+    start,b,d,b,end
+    start,b,end
+
+The slightly larger example above now has `103` paths through it, and
+the even larger example now has `3509` paths through it.
+
+Given these new rules, *how many paths through this cave system are
+there?*
+
+Your puzzle answer was `85883`.
+
