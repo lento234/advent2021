@@ -3,7 +3,7 @@
 # 🎅🎄 Advent of Code 2021 ☃️❄️
  
 
-![](https://img.shields.io/badge/stars%20⭐-28-gold.svg)
+![](https://img.shields.io/badge/stars%20⭐-30-gold.svg)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lento234/advent2021/CMake)
 ![Last commit](https://img.shields.io/github/last-commit/lento234/advent2021)
@@ -22,12 +22,12 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 ## Calendar
 
-|           M           |           T           |          W           |          T           |           F           |              S              |           S           |
-| :-------------------: | :-------------------: | :------------------: | :------------------: | :-------------------: | :-------------------------: | :-------------------: |
-|                       |                       | [1](day01/README.md) | [2](day02/README.md) | [3](day03/README.md)  |    [4](day04/README.md)     | [5](day05/README.md)  |
-| [6](day06/README.md)  | [7](day07/README.md)  | [8](day08/README.md) | [9](day09/README.md) | [10](day10/README.md) |    [11](day11/README.md)    | [12](day12/README.md) |
-| [13](day13/README.md) | [14](day14/README.md) |          15          |          16          |          17           |             18              |          19           |
-|          20           |          21           |          22          |          23          |          24           | [🎁](https://bit.ly/3pnrWiY) |                       |
+|           M           |           T           |           W           |          T           |           F           |              S              |           S           |
+| :-------------------: | :-------------------: | :-------------------: | :------------------: | :-------------------: | :-------------------------: | :-------------------: |
+|                       |                       | [1](day01/README.md)  | [2](day02/README.md) | [3](day03/README.md)  |    [4](day04/README.md)     | [5](day05/README.md)  |
+| [6](day06/README.md)  | [7](day07/README.md)  | [8](day08/README.md)  | [9](day09/README.md) | [10](day10/README.md) |    [11](day11/README.md)    | [12](day12/README.md) |
+| [13](day13/README.md) | [14](day14/README.md) | [15](day15/README.md) |          16          |          17           |             18              |          19           |
+|          20           |          21           |          22           |          23          |          24           | [🎁](https://bit.ly/3pnrWiY) |                       |
 
 ## Benchmark
 
@@ -50,6 +50,7 @@ Performance benchmarked on `AMD Ryzen 9 3900X (24) @ 4.0GHz`, `GCC 11.1.0`, and 
 | [`12`](day12/src/main.cpp) | **Passage Pathing**         |        53743 |   126 MB | `off the charts ==================>` |
 | [`13`](day13/src/main.cpp) | **Transparent Origami**     |         1222 |   784 kB | `████████████`                       |
 | [`14`](day14/src/main.cpp) | **Extended Polymerization** |         1573 |   494 kB | `████████████████`                   |
+| [`15`](day15/src/main.cpp) | **Chiton**                  |        48016 |  14.7 MB | `off the charts ==================>` |
 
 
 ## Build 

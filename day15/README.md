@@ -1,7 +1,6 @@
 # Day 15
 
-\-\-- Day 15: Chiton \-\--
---------------------------
+## \-\-- Day 15: Chiton \-\--
 
 You\'ve almost reached the exit of the cave, but the walls are getting
 closer together. Your submarine can barely still fit, though; the main
@@ -55,10 +54,7 @@ bottom right?*
 
 Your puzzle answer was `498`.
 
-The first half of this puzzle is complete! It provides one gold star: \*
-
-\-\-- Part Two \-\-- 
---------------------
+## \-\-- Part Two \-\-- 
 
 Now that you know how to find low-risk paths in the cave, you can try to
 find your way out.
@@ -197,12 +193,5 @@ never entered, so its risk is not counted).
 Using the full map, *what is the lowest total risk of any path from the
 top left to the bottom right?*
 
-Answer:
+Your puzzle answer was `2901`.
 
-Although it hasn\'t changed, you can still [get your puzzle
-input](15/input).
-
-You can also [\[Share[on
-[Twitter](https://twitter.com/intent/tweet?text=I%27ve+completed+Part+One+of+%22Chiton%22+%2D+Day+15+%2D+Advent+of+Code+2021&url=https%3A%2F%2Fadventofcode%2Ecom%2F2021%2Fday%2F15&related=ericwastl&hashtags=AdventOfCode)
-[Mastodon](javascript:void(0);)]\]] this puzzle.
-:::

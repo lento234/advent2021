@@ -9,61 +9,18 @@
 #include <utils/parser.h>
 #include <utils/timer.h>
 
-using dtype_t = uint64_t;
-using pair_t = std::pair<size_t, dtype_t>;
-
-static std::vector<uint8_t> parse_grid(utils::Text<std::string>& input)
-{
-    size_t n_rows = input.size();
-    size_t n_cols = input[0].size();
-
-    // Initialize grid
-    std::vector<uint8_t> grid(n_cols * n_rows, 0);
-    for (size_t i = 0; i < n_rows; ++i)
-        for (size_t j = 0; j < n_cols; ++j)
-            grid[i * n_cols + j] = input[i][j] - '0';
-
-    return grid;
-}
-
-static inline std::vector<size_t> get_neighbours(size_t k, size_t n_rows, size_t n_cols)
-{
-    std::vector<size_t> neighbours;
-    size_t i = k / n_cols;
-    size_t j = k % n_cols;
-
-    if (i > 0)
-        neighbours.push_back((i - 1) * n_cols + j);
-    if (i < n_rows - 1)
-        neighbours.push_back((i + 1) * n_cols + j);
-    if (j > 0)
-        neighbours.push_back(i * n_cols + j - 1);
-    if (j < n_cols - 1)
-        neighbours.push_back(i * n_cols + j + 1);
-
-    return neighbours;
-}
-
-static uint64_t get_grid_p_period(std::vector<uint8_t>& grid, size_t neighbour, size_t n_rows, size_t n_cols, size_t p)
-{
-    size_t i = (neighbour / (n_cols * p)) % n_rows;
-    size_t j = neighbour % n_cols;
-    size_t p_i = neighbour / (n_rows * n_rows * p);
-    size_t p_j = (neighbour % (n_cols * p)) / n_cols;
-
-    uint64_t value = (grid[i * n_cols + j] + p_i + p_j) % 9;
-    return value == 0 ? 9 : value;
-}
+#include "core.h"
 
 static dtype_t problem1(utils::Text<std::string>& input)
 {
     // Initilize grid
-    size_t n_rows = input.size();
-    size_t n_cols = input[0].size();
+    const size_t n_rows = input.size();
+    const size_t n_cols = input[0].size();
     std::vector<uint8_t> grid = parse_grid(input);
 
     // Make queue of position and cost
-    auto cmp = [](const pair_t& a, const pair_t& b) {
+    auto cmp = [](const pair_t& a, const pair_t& b)
+    {
         return a.second > b.second;
     };
     std::priority_queue<pair_t, std::vector<pair_t>, decltype(cmp)> queue(cmp);
@@ -81,7 +38,7 @@ static dtype_t problem1(utils::Text<std::string>& input)
 
         std::vector<size_t> neighbours = get_neighbours(k, n_rows, n_cols);
 
-        for (auto neighbour : neighbours)
+        for (auto& neighbour : neighbours)
         {
             dtype_t new_cost = cost + grid[neighbour];
             if (new_cost < cost_map[neighbour])
@@ -98,18 +55,16 @@ static dtype_t problem1(utils::Text<std::string>& input)
     return answer;
 }
 
-static dtype_t problem2(utils::Text<std::string>& input)
+static dtype_t problem2(utils::Text<std::string>& input, const size_t& p)
 {
-    // Period repeats
-    size_t p = 5;
-
     // Initilize grid
-    size_t n_rows = input.size();
-    size_t n_cols = input[0].size();
+    const size_t n_rows = input.size();
+    const size_t n_cols = input[0].size();
     std::vector<uint8_t> grid = parse_grid(input);
 
     // Make queue of position and cost
-    auto cmp = [](const pair_t& a, const pair_t& b) {
+    auto cmp = [](const pair_t& a, const pair_t& b)
+    {
         return a.second > b.second;
     };
     std::priority_queue<pair_t, std::vector<pair_t>, decltype(cmp)> queue(cmp);
@@ -126,9 +81,8 @@ static dtype_t problem2(utils::Text<std::string>& input)
 
         std::vector<size_t> neighbours = get_neighbours(k, n_rows * p, n_cols * p);
 
-        for (auto neighbour : neighbours)
+        for (auto& neighbour : neighbours)
         {
-            // dtype_t new_cost = cost + grid[neighbour];
             dtype_t new_cost = cost + get_grid_p_period(grid, neighbour, n_rows, n_cols, p);
             if (new_cost < cost_map[neighbour])
             {
@@ -136,7 +90,6 @@ static dtype_t problem2(utils::Text<std::string>& input)
                 queue.push({neighbour, new_cost});
             }
         }
-        // fmt::print("{}: cost = {}, neighbours = {}\n", k, cost_map[k], neighbours);
     }
 
     // Answer
@@ -163,7 +116,7 @@ int main()
                test_answer1,
                utils::pass_or_fail<dtype_t>(test_answer1, 40));
 
-    dtype_t test_answer2 = problem2(test_input);
+    dtype_t test_answer2 = problem2(test_input, 5);
     fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
                test_answer2,
                utils::pass_or_fail<dtype_t>(test_answer2, 315));
@@ -175,5 +128,5 @@ int main()
     fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
     // Problem 2
-    fmt::print(">> Problem 2: answer = {}\n", problem2(input));
+    fmt::print(">> Problem 2: answer = {}\n", problem2(input, 5));
 }
