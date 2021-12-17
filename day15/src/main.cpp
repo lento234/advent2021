@@ -44,15 +44,14 @@ static inline std::vector<size_t> get_neighbours(size_t k, size_t n_rows, size_t
     return neighbours;
 }
 
-static uint64_t get_grid_p_period(std::vector<uint8_t>& grid,
-                                  size_t neighbour,
-                                  size_t n_rows,
-                                  size_t n_cols,
-                                  size_t p);
+static uint64_t get_grid_p_period(std::vector<uint8_t>& grid, size_t neighbour, size_t n_rows, size_t n_cols, size_t p)
 {
-    size_t i = neighbour / (n_cols * p);
-    size_t j = neighbour % (n_cols * p);
-    // size_t p_i =  / p;
+    size_t i = (neighbour / (n_cols * p)) % n_rows;
+    size_t j = neighbour % n_cols;
+    size_t p_i = (neighbour % (n_cols * p)) / n_cols;
+    size_t p_j = neighbour / n_rows;
+
+    return (grid[i * n_cols + j] + p_i + p_j) % 9;
 }
 
 static dtype_t problem1(utils::Text<std::string>& input)
