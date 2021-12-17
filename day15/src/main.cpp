@@ -9,7 +9,8 @@
 #include <utils/parser.h>
 #include <utils/timer.h>
 
-using pair_t = std::pair<size_t, uint64_t>;
+using dtype_t = uint16_t;
+using pair_t = std::pair<size_t, dtype_t>;
 
 static std::vector<uint8_t> parse_grid(utils::Text<std::string>& input)
 {
@@ -43,7 +44,7 @@ static inline std::vector<size_t> get_neighbours(size_t k, size_t n_rows, size_t
     return neighbours;
 }
 
-static uint64_t problem1(utils::Text<std::string>& input)
+static dtype_t problem1(utils::Text<std::string>& input)
 {
     // Initilize grid
     size_t n_rows = input.size();
@@ -58,7 +59,7 @@ static uint64_t problem1(utils::Text<std::string>& input)
     queue.push({0, 0});
 
     // Initialize cost map
-    std::vector<uint64_t> cost_map(n_rows * n_cols, std::numeric_limits<uint64_t>::max());
+    std::vector<dtype_t> cost_map(n_rows * n_cols, std::numeric_limits<dtype_t>::max());
     cost_map[0] = 0;
 
     while (!queue.empty())
@@ -70,7 +71,7 @@ static uint64_t problem1(utils::Text<std::string>& input)
 
         for (auto neighbour : neighbours)
         {
-            uint64_t new_cost = cost + grid[neighbour];
+            dtype_t new_cost = cost + grid[neighbour];
             if (new_cost < cost_map[neighbour])
             {
                 cost_map[neighbour] = new_cost;
@@ -81,7 +82,7 @@ static uint64_t problem1(utils::Text<std::string>& input)
     }
 
     // Answer
-    uint64_t answer = cost_map[n_rows * n_cols - 1];
+    dtype_t answer = cost_map[n_rows * n_cols - 1];
 
     return answer;
 }
@@ -99,10 +100,10 @@ int main()
     // Test input
     auto test_input = utils::Text<std::string>("test_input.txt");
 
-    uint64_t test_answer1 = problem1(test_input);
+    dtype_t test_answer1 = problem1(test_input);
     fmt::print(">> [Test] Problem 1: answer = {} [{}]\n",
                test_answer1,
-               utils::pass_or_fail<uint64_t>(test_answer1, 40));
+               utils::pass_or_fail<dtype_t>(test_answer1, 40));
 
     // int64_t test_answer2 = problem2(test_input);
     // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
