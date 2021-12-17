@@ -9,7 +9,7 @@
 #include <utils/parser.h>
 #include <utils/timer.h>
 
-using dtype_t = uint16_t;
+using dtype_t = uint64_t;
 using pair_t = std::pair<size_t, dtype_t>;
 
 static std::vector<uint8_t> parse_grid(utils::Text<std::string>& input)
@@ -44,6 +44,17 @@ static inline std::vector<size_t> get_neighbours(size_t k, size_t n_rows, size_t
     return neighbours;
 }
 
+static uint64_t get_grid_p_period(std::vector<uint8_t>& grid,
+                                  size_t neighbour,
+                                  size_t n_rows,
+                                  size_t n_cols,
+                                  size_t p);
+{
+    size_t i = neighbour / (n_cols * p);
+    size_t j = neighbour % (n_cols * p);
+    // size_t p_i =  / p;
+}
+
 static dtype_t problem1(utils::Text<std::string>& input)
 {
     // Initilize grid
@@ -56,12 +67,13 @@ static dtype_t problem1(utils::Text<std::string>& input)
         return a.second > b.second;
     };
     std::priority_queue<pair_t, std::vector<pair_t>, decltype(cmp)> queue(cmp);
-    queue.push({0, 0});
+    queue.push({0, 0}); // start risk not counted
 
     // Initialize cost map
     std::vector<dtype_t> cost_map(n_rows * n_cols, std::numeric_limits<dtype_t>::max());
     cost_map[0] = 0;
 
+    // Dijkstra's Algorithm
     while (!queue.empty())
     {
         auto [k, cost] = queue.top();
@@ -72,6 +84,52 @@ static dtype_t problem1(utils::Text<std::string>& input)
         for (auto neighbour : neighbours)
         {
             dtype_t new_cost = cost + grid[neighbour];
+            if (new_cost < cost_map[neighbour])
+            {
+                cost_map[neighbour] = new_cost;
+                queue.push({neighbour, new_cost});
+            }
+        }
+    }
+
+    // Answer
+    dtype_t answer = cost_map[n_rows * n_cols - 1];
+
+    return answer;
+}
+
+static dtype_t problem1(utils::Text<std::string>& input)
+{
+    // Period repeats
+    size_t p = 5;
+
+    // Initilize grid
+    size_t n_rows = input.size();
+    size_t n_cols = input[0].size();
+    std::vector<uint8_t> grid = parse_grid(input);
+
+    // Make queue of position and cost
+    auto cmp = [](const pair_t& a, const pair_t& b) {
+        return a.second > b.second;
+    };
+    std::priority_queue<pair_t, std::vector<pair_t>, decltype(cmp)> queue(cmp);
+    queue.push({0, 0}); // start risk not counted
+
+    // Initialize cost map
+    std::vector<dtype_t> cost_map(n_rows * p * n_cols * p, std::numeric_limits<dtype_t>::max());
+    cost_map[0] = 0;
+
+    while (!queue.empty())
+    {
+        auto [k, cost] = queue.top();
+        queue.pop();
+
+        std::vector<size_t> neighbours = get_neighbours(k, n_rows * p, n_cols * p);
+
+        for (auto neighbour : neighbours)
+        {
+            // dtype_t new_cost = cost + grid[neighbour];
+            dtype_t new_cost = cost + get_grid_p_period(grid, neighbour, n_rows, n_cols, p);
             if (new_cost < cost_map[neighbour])
             {
                 cost_map[neighbour] = new_cost;
@@ -105,16 +163,16 @@ int main()
                test_answer1,
                utils::pass_or_fail<dtype_t>(test_answer1, 40));
 
-    // int64_t test_answer2 = problem2(test_input);
+    // dtype_t test_answer2 = problem2(test_input);
     // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
     //            test_answer2,
-    //            utils::pass_or_fail<uint32_t>(test_answer2, 0));
+    //            utils::pass_or_fail<dtype_t>(test_answer2, 315));
 
     // Real input
-    auto input = utils::Text<std::string>("input.txt");
+    // auto input = utils::Text<std::string>("input.txt");
 
     // Problem 1
-    fmt::print(">> Problem 1: answer = {}\n", problem1(input));
+    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
     // // Problem 2
     // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
