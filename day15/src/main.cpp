@@ -50,16 +50,16 @@ static uint64_t problem1(utils::Text<std::string>& input)
     size_t n_cols = input[0].size();
     std::vector<uint8_t> grid = parse_grid(input);
 
-    // fmt::print("Grid size: {}x{}\n", n_rows, n_cols);
-    // input.print();
-    // fmt::print("Grid size: {}\n", grid);
-
     // Make queue of position and cost
-    std::unordered_map<size_t, uint64_t> cost_init = {{0, 0}};
+    auto cmp = [](const pair_t& a, const pair_t& b) {
+        return a.second > b.second;
+    };
+    std::priority_queue<pair_t, std::vector<pair_t>, decltype(cmp)> queue(cmp);
+    queue.push({0, 0});
+
+    // Initialize cost map
     std::vector<uint64_t> cost_map(n_rows * n_cols, std::numeric_limits<uint64_t>::max());
     cost_map[0] = 0;
-    std::priority_queue<pair_t, std::vector<pair_t>, std::greater<pair_t>> queue(cost_init.begin(), cost_init.end());
-
 
     while (!queue.empty())
     {
