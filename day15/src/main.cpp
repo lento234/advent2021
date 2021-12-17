@@ -48,10 +48,11 @@ static uint64_t get_grid_p_period(std::vector<uint8_t>& grid, size_t neighbour, 
 {
     size_t i = (neighbour / (n_cols * p)) % n_rows;
     size_t j = neighbour % n_cols;
-    size_t p_i = (neighbour % (n_cols * p)) / n_cols;
-    size_t p_j = neighbour / n_rows;
+    size_t p_i = neighbour / (n_rows * n_rows * p);
+    size_t p_j = (neighbour % (n_cols * p)) / n_cols;
 
-    return (grid[i * n_cols + j] + p_i + p_j) % 9;
+    uint64_t value = (grid[i * n_cols + j] + p_i + p_j) % 9;
+    return value == 0 ? 9 : value;
 }
 
 static dtype_t problem1(utils::Text<std::string>& input)
@@ -92,12 +93,12 @@ static dtype_t problem1(utils::Text<std::string>& input)
     }
 
     // Answer
-    dtype_t answer = cost_map[n_rows * n_cols - 1];
+    dtype_t answer = cost_map.back();
 
     return answer;
 }
 
-static dtype_t problem1(utils::Text<std::string>& input)
+static dtype_t problem2(utils::Text<std::string>& input)
 {
     // Period repeats
     size_t p = 5;
@@ -139,7 +140,7 @@ static dtype_t problem1(utils::Text<std::string>& input)
     }
 
     // Answer
-    dtype_t answer = cost_map[n_rows * n_cols - 1];
+    dtype_t answer = cost_map.back();
 
     return answer;
 }
@@ -162,17 +163,17 @@ int main()
                test_answer1,
                utils::pass_or_fail<dtype_t>(test_answer1, 40));
 
-    // dtype_t test_answer2 = problem2(test_input);
-    // fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
-    //            test_answer2,
-    //            utils::pass_or_fail<dtype_t>(test_answer2, 315));
+    dtype_t test_answer2 = problem2(test_input);
+    fmt::print(">> [Test] Problem 2: answer = {} [{}]\n\n",
+               test_answer2,
+               utils::pass_or_fail<dtype_t>(test_answer2, 315));
 
     // Real input
-    // auto input = utils::Text<std::string>("input.txt");
+    auto input = utils::Text<std::string>("input.txt");
 
     // Problem 1
-    // fmt::print(">> Problem 1: answer = {}\n", problem1(input));
+    fmt::print(">> Problem 1: answer = {}\n", problem1(input));
 
-    // // Problem 2
-    // fmt::print(">> Problem 2: answer = {}\n", problem2(input));
+    // Problem 2
+    fmt::print(">> Problem 2: answer = {}\n", problem2(input));
 }
